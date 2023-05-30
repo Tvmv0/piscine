@@ -12,7 +12,8 @@ use piscine;
 
 CREATE TABLE administrateur (
  id_admin int NOT NULL primary key,
- id_vendeur int NOT NULL
+ id_vendeur int NOT NULL,
+ FOREIGN KEY (id_vendeur) REFERENCES vendeur(id_vendeur)
 );
 
 CREATE TABLE vendeur (
@@ -33,7 +34,9 @@ CREATE TABLE acheteur (
  prenom_acheteur varchar(20) not null,
  mail_acheteur varchar(50) not null,
  id_paiement int not null,
- id_panier int not null
+ id_panier int not null,
+ FOREIGN KEY (id_paiement) REFERENCES info_paiement(id_paiement),
+ FOREIGN KEY (id_panier) REFERENCES panier(id_panier)
 );
 
 INSERT INTO acheteur VALUES ('0','nom1','prenom1','il1','1','2');
@@ -51,7 +54,8 @@ CREATE TABLE items (
  prix int NOT NULL,
  categorie int NOT NULL,
  methode_vente int NOT NULL,
- id_vendeur int NOT NULL
+ id_vendeur int NOT NULL,
+ FOREIGN KEY (id_vendeur) REFERENCES vendeur(id_vendeur)
 );
  
 INSERT INTO items VALUES ('0','chaise','photo1.jpg','','','','description','500','1','1','1');
@@ -61,7 +65,9 @@ INSERT INTO items VALUES ('2','mauble','photo2.jpg','','','','description','500'
 CREATE TABLE panier (
  id_panier int NOT NULL PRIMARY KEY,
  id_item int not null,
- id_acheteur int not null
+ id_acheteur int not null,
+ FOREIGN KEY (id_item) REFERENCES items(id_item),
+ FOREIGN KEY (id_acheteur) REFERENCES acheteur(id_acheteur)
 );
 
 CREATE TABLE info_paiement (
@@ -73,5 +79,6 @@ CREATE TABLE info_paiement (
  ville VARCHAR(50) not null,
  pays VARCHAR (40) not null,
  num_carte int (16) not null,
- num_cache int (3) NOT NULL
+ num_cache int (3) NOT NULL,
+ FOREIGN KEY (id_acheteur) REFERENCES acheteur(id_acheteur)
 );
