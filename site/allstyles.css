@@ -1,0 +1,31 @@
+
+#wrapper {
+    background-color: whitesmoke;
+    padding: 15px;
+}
+
+#logo {
+    float: right;
+}
+
+.google-map {
+    padding-bottom: 50%;
+    position: relative;
+}
+
+.google-map iframe {
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;
+}
+
+#map {
+    padding: 5px;
+}
+
+.nav-link {
+    font-size: large;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
