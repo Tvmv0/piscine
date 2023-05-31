@@ -89,7 +89,7 @@
                         <div class="row">
                             <?php
                             $database = "piscine";
-                            $db_handle = mysqli_connect('localhost', 'root', 'root');
+                            $db_handle = mysqli_connect('localhost', 'root', '');
                             $db_found = mysqli_select_db($db_handle, $database);
 
                             $sql = "SELECT * FROM items ";
@@ -100,7 +100,7 @@
                             echo " <div class=" . "col-md-4" . ">";
                             echo "<div class = card>";
                             $image = $data['photo1'];
-                            echo "<center> <a href=page_produit.php><img src='$image' height='200' width='200'> </a> </center>";
+                            echo "<center> <img src='$image' height='150' width='150'> </center>";
                             echo "<h4>" . $data['nom_obj'] . "</h4>";
                             echo "<h5>" . $data['prix'] . "€ </h5>";
                             echo "<p><button id=panier>Ajouter au panier</button></p>";
@@ -112,10 +112,13 @@
                                 echo " <div class=" . "col-md-4" . ">";
                                 echo "<div class = card>";
                                 $image = $data['photo1'];
-                                echo "<center> <a href=page_produit.php><img src='$image' height='200' width='200'> </a> </center>";
+                                echo "<center> <img src='$image' height='150' width='150' > </center>";
                                 echo "<h4>" . $data['nom_obj'] . "</h4>";
                                 echo "<h5>" . $data['prix'] . "€ </h5>";
+                                echo '<form method="POST" action="panier2.php">';
                                 echo "<p><button id=panier>Ajouter au panier</button></p>";
+                                echo '</form>';
+                                //echo "<p><button id=panier>Ajouter au panier</button></p>";
                                 echo "<p><button id=notif>Notification</button></p>";
                                 echo "</div>";
                                 echo "</div>";

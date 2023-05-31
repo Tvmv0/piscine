@@ -4,7 +4,7 @@
 $database = "piscine";
 
 //connectez-vous dans BDD
-$db_handle = mysqli_connect('localhost', 'root', 'root');
+$db_handle = mysqli_connect('localhost', 'root', '');
 $db_found = mysqli_select_db($db_handle, $database);
 
 
@@ -124,7 +124,7 @@ mysqli_close($db_handle);
                         echo " <div class=" . "col-md-4" . ">";
                         echo "<div class = card>";
                         $image = $data['photo1'];
-                        echo "<center> <a href=page_produit.php><img src='$image' height='200' width='200'> </a> </center>";
+                        echo "<center> <img src='$image' height='150' width='150'> </center>";
                         echo "<h4>" . $data['nom_obj'] . "</h4>";
                         echo "<h5>" . $data['prix'] . "€ </h5>";
                         echo "<p><button>Ajouter au panier</button></p>";
@@ -136,7 +136,7 @@ mysqli_close($db_handle);
                             echo " <div class=" . "col-md-4" . ">";
                             echo "<div class = card>";
                             $image = $data['photo1'];
-                            echo "<center> <a href=page_produit.php><img src='$image' height='200' width='200'> </a> </center>";
+                            echo "<center> <img src='$image' height='150' width='150' > </center>";
                             echo "<h4>" . $data['nom_obj'] . "</h4>";
                             echo "<h5>" . $data['prix'] . "€ </h5>";
                             echo "<p><button>Ajouter au panier</button></p>";
