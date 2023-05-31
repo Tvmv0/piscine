@@ -100,7 +100,7 @@
                             echo " <div class=" . "col-md-4" . ">";
                             echo "<div class = card>";
                             $image = $data['photo1'];
-                            echo "<center> <img src='$image' height='150' width='150'> </center>";
+                            echo "<center> <a href=page_produit.php><img src='$image' height='200' width='200'> </a> </center>";
                             echo "<h4>" . $data['nom_obj'] . "</h4>";
                             echo "<h5>" . $data['prix'] . "€ </h5>";
                             echo "<p><button id=panier>Ajouter au panier</button></p>";
@@ -112,7 +112,7 @@
                                 echo " <div class=" . "col-md-4" . ">";
                                 echo "<div class = card>";
                                 $image = $data['photo1'];
-                                echo "<center> <img src='$image' height='150' width='150' > </center>";
+                                echo "<center> <a href=page_produit.php><img src='$image' height='200' width='200'> </a> </center>";
                                 echo "<h4>" . $data['nom_obj'] . "</h4>";
                                 echo "<h5>" . $data['prix'] . "€ </h5>";
                                 echo "<p><button id=panier>Ajouter au panier</button></p>";
