@@ -16,6 +16,8 @@ CREATE TABLE administrateur (
  FOREIGN KEY (id_vendeur) REFERENCES vendeur(id_vendeur)
 );
 
+INSERT INTO administrateur VALUES ('0','1');
+
 CREATE TABLE vendeur (
  id_vendeur int NOT NULL primary key,
  pseudo varchar(20) not null,
@@ -56,19 +58,21 @@ CREATE TABLE items (
  categorie int NOT NULL,
  methode_vente int NOT NULL,
  id_vendeur int NOT NULL,
+ nb_vendu int,
+ stock int, 
  FOREIGN KEY (id_vendeur) REFERENCES vendeur(id_vendeur)
 );
  
-INSERT INTO items VALUES ('0','chaise','img_items/photo1_1.jpg','','','','description','500','1','1','1');
-INSERT INTO items VALUES ('1','table','img_items/photo2_1.jpg','','','','description','200','1','3','1');
-INSERT INTO items VALUES ('2','meuble','img_items/photo3_1.jpg','','','','description','20','2','1','2');
-INSERT INTO items VALUES ('3','lunettes','img_items/photo4_1.jpg','','','','description','1000','2','2','2');
-INSERT INTO items VALUES ('4','toilettes','img_items/photo5_1.jpg','','','','description','750','2','3','2');
-INSERT INTO items VALUES ('5','chaies2','img_items/photo6_1.jpg','','','','description','50','3','3','2');
-INSERT INTO items VALUES ('6','table2','img_items/photo7_1.jpg','','','','description','80','3','1','1');
-INSERT INTO items VALUES ('7','table3','img_items/photo8_1.jpg','','','','description','100','3','2','1');
-INSERT INTO items VALUES ('8','fauteuil','img_items/photo9_1.jpg','','','','description','250','1','1','2');
-INSERT INTO items VALUES ('9','meuble','img_items/photo10_1.jpg','','','','description','800','1','2','2');
+INSERT INTO items VALUES ('0','chaise','img_items/photo1_1.jpg','','','','description','500','1','1','1','5','');
+INSERT INTO items VALUES ('1','table','img_items/photo2_1.jpg','','','','description','200','1','3','1','10','');
+INSERT INTO items VALUES ('2','meuble','img_items/photo3_1.jpg','','','','description','20','2','1','2','2','');
+INSERT INTO items VALUES ('3','lunettes','img_items/photo4_1.jpg','','','','description','1000','2','2','2','60','');
+INSERT INTO items VALUES ('4','toilettes','img_items/photo5_1.jpg','','','','description','750','2','3','2','50','');
+INSERT INTO items VALUES ('5','chaies2','img_items/photo6_1.jpg','','','','description','50','3','3','2','8','');
+INSERT INTO items VALUES ('6','table2','img_items/photo7_1.jpg','','','','description','80','3','1','1','70','');
+INSERT INTO items VALUES ('7','table3','img_items/photo8_1.jpg','','','','description','100','3','2','1','3','');
+INSERT INTO items VALUES ('8','fauteuil','img_items/photo9_1.jpg','','','','description','250','1','1','2','4','');
+INSERT INTO items VALUES ('9','meuble','img_items/photo10_1.jpg','','','','description','800','1','2','2','0','');
  
 CREATE TABLE panier (
  id_panier int NOT NULL PRIMARY KEY,
@@ -77,6 +81,10 @@ CREATE TABLE panier (
  FOREIGN KEY (id_item) REFERENCES items(id_item),
  FOREIGN KEY (id_acheteur) REFERENCES acheteur(id_acheteur)
 );
+
+INSERT INTO panier VALUES ('0','1','0');
+INSERT INTO panier VALUES ('1','1','0');
+INSERT INTO panier VALUES ('2','0','1');
 
 CREATE TABLE info_paiement (
  id_paiement int not null PRIMARY KEY,
