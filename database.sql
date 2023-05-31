@@ -11,7 +11,7 @@ use piscine;
 
 
 CREATE TABLE administrateur (
- id_admin int NOT NULL primary key,
+ id_admin int NOT NULL primary key AUTO_INCREMENT,
  id_vendeur int NOT NULL,
  FOREIGN KEY (id_vendeur) REFERENCES vendeur(id_vendeur)
 );
@@ -19,7 +19,7 @@ CREATE TABLE administrateur (
 INSERT INTO administrateur VALUES ('0','1');
 
 CREATE TABLE vendeur (
- id_vendeur int NOT NULL primary key,
+ id_vendeur int NOT NULL primary key AUTO_INCREMENT,
  pseudo varchar(20) not null,
  mail_vendeur varchar(50) not null,
  photo_vendeur varchar(50) not null,
@@ -31,7 +31,7 @@ INSERT INTO vendeur VALUES ('2','nom3','mail3','photo3','ban3');
 
 
 CREATE TABLE acheteur (
- id_acheteur int NOT NULL primary key,
+ id_acheteur int NOT NULL primary key AUTO_INCREMENT,
  nom_acheteur varchar(20) not null,
  prenom_acheteur varchar(20) not null,
  mail_acheteur varchar(50) not null,
@@ -47,7 +47,7 @@ INSERT INTO acheteur VALUES ('1','nom2','prenom1','il1','mdp2','1','2');
 INSERT INTO acheteur VALUES ('2','nom3','prenom1','il1','mdp3','1','2');
 
 CREATE TABLE items (
- id_item int NOT NULL primary key,
+ id_item int NOT NULL primary key AUTO_INCREMENT,
  nom_obj varchar(25) not null,
  photo1 varchar(50) not null,
  photo2 varchar(50),
@@ -75,7 +75,7 @@ INSERT INTO items VALUES ('8','fauteuil','img_items/photo9_1.jpg','','','','desc
 INSERT INTO items VALUES ('9','meuble','img_items/photo10_1.jpg','','','','description','800','1','2','2','0','');
  
 CREATE TABLE panier (
- id_panier int NOT NULL PRIMARY KEY,
+ id_panier int NOT NULL PRIMARY KEY AUTO_INCREMENT,
  id_item int not null,
  id_acheteur int not null,
  FOREIGN KEY (id_item) REFERENCES items(id_item),
@@ -83,11 +83,13 @@ CREATE TABLE panier (
 );
 
 INSERT INTO panier VALUES ('0','1','0');
-INSERT INTO panier VALUES ('1','1','0');
+INSERT INTO panier VALUES ('1','1','2');
 INSERT INTO panier VALUES ('2','0','1');
+INSERT INTO panier VALUES ('3','2','2');
+INSERT INTO panier VALUES ('4','0','2');
 
 CREATE TABLE info_paiement (
- id_paiement int not null PRIMARY KEY,
+ id_paiement int not null PRIMARY KEY AUTO_INCREMENT,
  id_acheteur int not null,
  num_rue int not null,
  nom_rue VARCHAR(50) not null,
