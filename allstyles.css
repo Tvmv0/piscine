@@ -3,92 +3,96 @@
 /* https://developer.mozilla.org/fr/docs/Web/CSS/box-shadow */
     /* https://www.scaler.com/topics/login-page-in-html/ */
 
-#wrapper {
-  background-color: whitesmoke;
-  padding: 15px;
-}
+    #wrapper {
+        background-color: whitesmoke;
+        padding: 15px;
+      }
+      
+      #logo {
+        float: right;
+      }
+      
+      .google-map {
+        padding-bottom: 50%;
+        position: relative;
+      }
+      
+      .google-map iframe {
+        height: 100%;
+        width: 100%;
+        left: 0;
+        top: 0;
+        position: absolute;
+      }
+      
+      #map {
+        padding: 5px;
+      }
+      
+      .nav-link {
+        font-size: large;
+        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+      }
+      
+      body 
+      {
+        font-family:sans-serif; 
+        color:rgba(31, 29, 29, 0.937);
+      }
 
-#logo {
-  float: right;
-}
-
-.google-map {
-  padding-bottom: 50%;
-  position: relative;
-}
-
-.google-map iframe {
-  height: 100%;
-  width: 100%;
-  left: 0;
-  top: 0;
-  position: absolute;
-}
-
-#map {
-  padding: 5px;
-}
-
-.nav-link {
-  font-size: large;
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
-}
-
-body 
-{
-  font-family:sans-serif; 
-  color:whitesmoke;
-}
-
-
-h1{
-    text-align: center;
-}
-
-
-form{
-    width:35rem;
-    margin: auto;
-    color:whitesmoke;
-    background-color: rgba(255, 82, 142, 0.736);
-    border-radius: 12px;
-    box-shadow: 10px 10px 10px rgba(41, 39, 39, 0.278);
-    border: 1px solid rgba(56, 65, 61, 0.432);
-    padding: 20px 25px;
-}
-
-input[type=text], input[type=password]{
-    width: 100%;
-    margin: 10px 0;
-    border-radius: 5px;
-    padding: 15px 18px;
-    box-sizing: border-box;
-  }
-
-button {
-    background-color: #ff0051d5;
-    color: whitesmoke;
-    padding: 14px 20px;
-    border-radius: 5px;
-    margin: 7px 0;
-    width: 100%;
-    font-size: 18px;
-    font-weight: bold;
-  }
-
-button:hover {
-    opacity: 0.6;
-    cursor: pointer;
-}
-
-.headingsContainer{
-    text-align: center;
-}
-
-.headingsContainer p{
-    color: gray;
-}
-.mainContainer{
-    padding: 16px;
-}
-
+      h5{
+            font-weight: 600;
+      }
+      
+      
+      h1{
+          text-align: center;
+      }
+      
+      
+      form{
+          width:35rem;
+          margin: auto;
+          color:whitesmoke;
+          background-color: rgba(255, 82, 142, 0.736);
+          border-radius: 12px;
+          box-shadow: 10px 10px 10px rgba(41, 39, 39, 0.278);
+          border: 1px solid rgba(56, 65, 61, 0.432);
+          padding: 20px 25px;
+      }
+      
+      input[type=text], input[type=password]{
+          width: 100%;
+          margin: 10px 0;
+          border-radius: 5px;
+          padding: 15px 18px;
+          box-sizing: border-box;
+        }
+      
+      button {
+          background-color: #ff0051d5;
+          color: whitesmoke;
+          padding: 14px 20px;
+          border-radius: 5px;
+          margin: 7px 0;
+          width: 100%;
+          font-size: 18px;
+          font-weight: bold;
+        }
+      
+      button:hover {
+          opacity: 0.6;
+          cursor: pointer;
+      }
+      
+      .headingsContainer{
+          text-align: center;
+      }
+      
+      .headingsContainer p{
+          color: gray;
+      }
+      .mainContainer{
+          padding: 16px;
+      }
+            
