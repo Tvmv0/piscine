@@ -1,5 +1,5 @@
 <!--
-    CODE INSCRIPTION CLIENT
+    CODE INSCRIPTION NOUVEAU CLIENT
 
     SOURCES
   
@@ -59,10 +59,10 @@
                 <br>
                 <ul class="nav nav-underline">
                     <li class="nav-item">
-                        <a class="nav-link" href="compte.html">Vendeur</a>
+                        <a class="nav-link active" aria-current="page" href="#">Vendeur</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Acheteur</a>
+                        <a class="nav-link" href="compte.html">Acheteur</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Admin</a>
@@ -71,68 +71,30 @@
                 <br>
                 <!--FORMULAIRE-->
                 <div class="text-center">
-                    <h3>Indentification de votre compte client</h3>
+                    <h3>Création du compte vendeur</h3>
                 </div>
 
-                <form class="square-form" action="inscription_client.php" method="post">
+                <form class="square-form" action="ajout_vendeur.php" method="post">
                     <div class="form-group">
                         <label for="nom">Nom :</label>
-                        <input type="text" class="form-control" name="nom" id="nom" placeholder="Entrez votre Nom" required>
+                        <input type="text" class="form-control" name="pseudo" id="nom" placeholder="Saisissez votre pseudo" required>
                     </div>
 
                     <div class="form-group">
                         <label for="prenom">Prénom :</label>
-                        <input type="text" class="form-control" name="prenom" id="prenom" placeholder="Entrez votre Prénom" required>
+                        <input type="text" class="form-control" name="mail_vendeur" id="prenom" placeholder="Saisissez votre adresse mail" required>
                     </div>
 
                     <div class="form-group">
                         <label for="mail">Email :</label>
-                        <input type="text" class="form-control" name="mail" id="mail" placeholder="Entrez votre email" required>
+                        <input type="text" class="form-control" name="mdp" id="mail" placeholder="saisissez le chemin de la photo" required>
                     </div>
 
                     <div class="form-group">
                         <label for="mdp">Mot de Passe :</label>
-                        <input type="text" class="form-control" name="mdp" id="mdp" placeholder="Entrez votre mot de passe" required>
+                        <input type="text" class="form-control" name="banniere_vendeur" id="mdp" placeholder="Saisissez le chemin de la banniere" required>
                     </div>
 
-                    <br>
-                    <p>Adresse : </p>
-                    <div class="form-group">
-                        <label for="num_rue">N° rue :</label>
-                        <input type="int" class="form-control" name="num_rue" id="num_rue" placeholder="Entrez le numero de la rue" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="nom_rue">Rue :</label>
-                        <input type="text" class="form-control" name="nom_rue" id="nom_rue" placeholder="Entrez le nom de la rue" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="code_postal">Code postal :</label>
-                        <input type="int" class="form-control" name="code_postal" id="code_postal" placeholder="Entrez le code postal" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="ville">Ville :</label>
-                        <input type="text" class="form-control" name="ville" id="ville" placeholder="Entrez votre ville" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="ville">Pays :</label>
-                        <input type="text" class="form-control" name="pays" id="pays" placeholder="Entrez votre Pays" required>
-                    </div>
-                    <br>
-                    <div class="form-group">
-                        <label for="paiement">Information de Paiement :</label>
-                        <input type="int" class="form-control" name="num_carte" id="num_carte" placeholder="Entrez vos numéros de carte" required>
-                        <input type="date" class="form-control" name="date_exp" id="date" placeholder="Entrez la date d'expiration" required>
-                        <input type="int" class="form-control" name="cvv" id="cvv" placeholder="CVV" required>
-
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            Si une offre est faite sur un article, vous êtes sous contrat légal pour l'achter si le vendeur accepte
-                            votre offre.
-                        </label>
-                        <p class="register">Vous avez deja un compte ? <a href="compteclient.html">Connectez-vous !</a></p>
-                    </div>
                     <div class="d-grid gap-2 col-6 mx-auto">
                         <button type="submit" name="Valider">Créer</button>
                     </div>

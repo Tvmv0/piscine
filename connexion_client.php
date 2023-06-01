@@ -1,8 +1,4 @@
 <!--
-
-    CODE CONNEXION VENDEUR
-
-
     SOURCES
   
     https://getbootstrap.com/docs/5.3/
@@ -62,36 +58,39 @@
                     <br>
                     <ul class="nav nav-underline">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Vendeur</a>
+                            <a class="nav-link" href="compte.php">Vendeur</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="compteclient.html">Acheteur</a>
+                            <a class="nav-link active" aria-current="page" href="#">Acheteur</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Admin</a>
                         </li>
                     </ul>
                     <br>
-
                     <!-- Headings for the form -->
                     <div class="headingsContainer">
                         <h3>Connexion</h3>
                     </div>
-                    <form action="co_vendeur.php" method="post">
+
+                    <form action="co_client.php" method="post">
                         <!-- Main container for all inputs -->
                         <div class="mainContainer">
                             <!-- Username -->
-                            <label for="username">Identifiant</label>
-                            <input type="text" placeholder="Entrez votre identifiant" name="username" required>
+                            <label for="mail">Identifiant</label>
+                            <input type="text" placeholder="Entrez votre identifiant" name="mail" required>
 
                             <br><br>
 
                             <!-- Password -->
-                            <label for="mail">Email</label>
-                            <input type="text" placeholder="Entrez votre mail" name="mail" required>
+                            <label for="mdp">Mot de passe</label>
+                            <input type="text" placeholder="Entrez votre mot de passe" name="mdp" required>
+
+                            <p class="register">Vous n'avez pas de compte? <a href="nouveauclient.html">Inscrivez-vous!</a></p>
 
                             <!-- Submit button -->
                             <button type="submit" name="Connexion">Se connecter</button>
+
 
 
                         </div>
@@ -121,8 +120,9 @@
                                             <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Mail:
                                                     agorafrancia.commerce@gmail.com</a></li>
                                             <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Tél: 12 34 56 78 90</a></li>
-                                            <li class="nav-item mb-2"><a href="https://www.instagram.com/r3mi.lml/" class="nav-link p-0 text-muted">Instagram</a></li>
-                                            <li class="nav-item mb-2"><a href="https://www.facebook.com/profile.php?id=100012939098511" class="nav-link p-0 text-muted">Facebook</a></li>
+                                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Instagram</a></li>
+                                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Twitter</a></li>
+                                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Facebook</a></li>
                                         </ul>
                                     </div>
 
