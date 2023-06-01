@@ -35,16 +35,12 @@ CREATE TABLE acheteur (
  nom_acheteur varchar(20) not null,
  prenom_acheteur varchar(20) not null,
  mail_acheteur varchar(50) not null,
- mdp_acheteur varchar(25) not null,
- id_paiement int not null,
- id_panier int not null,
- FOREIGN KEY (id_paiement) REFERENCES info_paiement(id_paiement),
- FOREIGN KEY (id_panier) REFERENCES panier(id_panier)
+ mdp_acheteur varchar(25) not null
 );
 
-INSERT INTO acheteur VALUES ('0','nom1','prenom1','il1','mdp1','1','2');
-INSERT INTO acheteur VALUES ('1','nom2','prenom1','il1','mdp2','1','2');
-INSERT INTO acheteur VALUES ('2','nom3','prenom1','il1','mdp3','1','2');
+INSERT INTO acheteur VALUES ('0','nom1','prenom1','il1','mdp1');
+INSERT INTO acheteur VALUES ('1','nom2','prenom1','il1','mdp2');
+INSERT INTO acheteur VALUES ('2','nom3','prenom1','il1','mdp3');
 
 CREATE TABLE items (
  id_item int NOT NULL primary key AUTO_INCREMENT,
