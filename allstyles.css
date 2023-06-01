@@ -31,10 +31,12 @@
 
 }
 
+
 .nav-link:hover {
     background-color: #ff0051d5;;
       
   }
+
 
 table {
   background-color: white;
@@ -58,7 +60,7 @@ table {
   outline: 0;
   padding: 12px;
   color: white;
-  background-color: #ff0051d5;;
+  background-color: #f7266cd5;
   text-align: center;
   cursor: pointer;
   width: 170px;

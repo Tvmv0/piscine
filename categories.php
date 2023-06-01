@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 //identifier BDD
 $database = "piscine";
@@ -92,7 +93,6 @@ mysqli_close($db_handle);
                     <div class="col-md-2 offset-md-1">
                         <form action="categories.php" method="post">
                             <div class="form-group">
-
                                 <h4>Catégorie</h4>
                                 <div class="form-check">
                                     <button type="submit" name="categorie1" class="btn btn-sm">Articles rares</button>
@@ -119,12 +119,16 @@ mysqli_close($db_handle);
                     </div>
                     <div class="col-md-8">
                         <?php
+                        session_start();
                         echo "<div class='row'>";
 
                         echo " <div class=" . "col-md-4" . ">";
                         echo "<div class = card>";
                         $image = $data['photo1'];
-                        echo "<center> <a href=page_produit.php><img src='$image' height='200' width='200'> </a> </center>";
+
+                        $id = $data['id_item']; 
+                        echo "<center> <a href=page_produit.php?id=$id><img src='$image' name =" . "prod" . " height='200' width='200'> </a> </center>";
+
                         echo "<h4>" . $data['nom_obj'] . "</h4>";
                         echo "<h5>" . $data['prix'] . "€ </h5>";
                         echo "<p><button>Ajouter au panier</button></p>";
@@ -136,8 +140,10 @@ mysqli_close($db_handle);
                             echo " <div class=" . "col-md-4" . ">";
                             echo "<div class = card>";
                             $image = $data['photo1'];
-                            echo "<center> <a href=page_produit.php><img src='$image' height='200' width='200'> </a> </center>";
-                            echo "<h4>" . $data['nom_obj'] . "</h4>";
+
+                            $id = $data['id_item']; 
+                            echo "<center> <a href=page_produit.php?id=$id><img src='$image' name =" . "prod" . " height='200' width='200'> </a> </center>";
+                            
                             echo "<h5>" . $data['prix'] . "€ </h5>";
                             echo "<p><button>Ajouter au panier</button></p>";
                             echo "<p><button id=notif>Notification</button></p>";
