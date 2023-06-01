@@ -17,7 +17,7 @@ $db_handle = mysqli_connect('localhost', 'root', '');
 $db_found = mysqli_select_db($db_handle, $database);
 
 $id_client = 3;
-$id_article = 1;
+$id_article = 4;
 
 if ($db_found) {
     //echo "<p>on entre dans la DB</p>";

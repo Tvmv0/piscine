@@ -4,7 +4,7 @@ session_start();
 $database = "piscine";
 
 //connectez-vous dans BDD
-$db_handle = mysqli_connect('localhost', 'root', 'root');
+$db_handle = mysqli_connect('localhost', 'root', '');
 $db_found = mysqli_select_db($db_handle, $database);
 $id = $_GET['id'];
 
@@ -108,8 +108,9 @@ $data = mysqli_fetch_assoc($result);
                         ?>
 
                         <br>
-
-                        <p><button id=panier>Ajouter au panier</button></p>
+                        <form action="ajout_pan.php" method="post">
+                            <p><button id=panier>Ajouter au panier</button></p>
+                        </form>
                         <p><button id=notif>Notification</button></p>
 
                         <br>
