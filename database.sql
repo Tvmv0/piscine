@@ -93,6 +93,7 @@ CREATE TABLE info_paiement (
  ville VARCHAR(50) not null,
  pays VARCHAR (40) not null,
  num_carte int (16) not null,
- num_cache int (3) NOT NULL,
+ date_exp date not null,
+ cvv int (3) NOT NULL,
  FOREIGN KEY (id_acheteur) REFERENCES acheteur(id_acheteur)
 );
