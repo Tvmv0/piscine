@@ -8,6 +8,10 @@
   https://www.pierre-giraud.com/bootstrap-apprendre-cours/bouton/
 -->
 
+<?php
+session_start();
+?>
+
 
 <!DOCTYPE html>
 <html>
@@ -42,7 +46,7 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav mx-auto">
-                            <a class="nav-link active px-5" aria-current="page" href="index.html">Accueil</a>
+                            <a class="nav-link active px-5" aria-current="page" href="index.php">Accueil</a>
                             <a class="nav-link px-5" href="#">Tout Parcourir</a>
                             <a class="nav-link px-5" href="notifications.html">Notifications</a>
                             <a class="nav-link px-5" href="panier.html">Panier</a>
@@ -61,7 +65,7 @@
                         <form action="categories.php" method="post">
                             <div class="form-group">
 
-                                <h4>Catégorie</h4>
+                                <h4>Catégorie produit</h4>
                                 <div class="form-check">
                                     <button type="submit" name="categorie1" class="btn btn-sm">Articles rares</button>
                                 </div>
@@ -72,7 +76,7 @@
                                     <button type="submit" name="categorie3" class="btn btn-sm">Articles réguliers</button>
                                 </div>
 
-                                <h4>Catégorie</h4>
+                                <h4>Catégorie vente</h4>
                                 <div class="form-check">
                                     <button type="submit" name="encheres" class="btn btn-sm">Achat immédiat</button>
                                 </div>
@@ -88,8 +92,6 @@
                     <div class="col-md-8">
                         <div class="row">
                             <?php
-                            session_start();
-
                             $database = "piscine";
                             $db_handle = mysqli_connect('localhost', 'root', 'root');
                             $db_found = mysqli_select_db($db_handle, $database);
@@ -102,12 +104,14 @@
                             echo " <div class=" . "col-md-4" . ">";
                             echo "<div class = card>";
                             $image = $data['photo1'];
-                            
+
                             $id = $data['id_item'];
                             echo "<center> <a href=page_produit.php?id=$id><img src='$image' name =" . "prod" . " height='200' width='200'> </a> </center>";
 
                             echo "<h4>" . $data['nom_obj'] . "</h4>";
                             echo "<h5>" . $data['prix'] . "€ </h5>";
+
+                            echo "<center> <a href=ajout_pan.php?id=$id><img src='ajout_pan.jpg' name =" . "prod" . " height='50' width='170'> </a> </center>";
                             echo "<p><button id=panier>Ajouter au panier</button></p>";
                             echo "<p><button id=notif>Notification</button></p>";
                             echo "</div>";
@@ -123,6 +127,7 @@
 
                                 echo "<h4>" . $data['nom_obj'] . "</h4>";
                                 echo "<h5>" . $data['prix'] . "€ </h5>";
+                                echo "<center> <a href=ajout_pan.php?id=$id><img src='ajout_pan.jpg' name =" . "prod" . " height='50' width='170'> </a> </center>";
                                 echo "<p><button id=panier>Ajouter au panier</button></p>";
                                 echo "<p><button id=notif>Notification</button></p>";
                                 echo "</div>";
