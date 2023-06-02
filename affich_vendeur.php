@@ -30,7 +30,9 @@ if ($data = mysqli_fetch_assoc($result) == 0) {
 
     $id = $data['id_vendeur'];
     echo "<center> <a href=suppVend.php?id=$id><img src='$image' name =" . "prod" . " height='200' width='200'> </a> </center>";
-
+    /*echo '<form method="POST" action="suppVend.php">';
+    echo "<p><button value=$id id=panier>Supprimer</button></p>";
+    echo '</form>';*/
     echo "<h4>" . $data['pseudo'] . "</h4>";
     echo "</div>";
     echo "</div>";

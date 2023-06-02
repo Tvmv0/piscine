@@ -44,9 +44,9 @@
                         <div class="navbar-nav mx-auto">
                             <a class="nav-link active px-5" aria-current="page" href="index.html">Accueil</a>
                             <a class="nav-link px-5" href="#">Tout Parcourir</a>
-                            <a class="nav-link px-5" href="notifications.html">Notifications</a>
+                            <a class="nav-link px-5" href="nv_item.php">Notifications</a>
                             <a class="nav-link px-5" href="affich_vendeur.php">Panier</a>
-                            <a class="nav-link px-5" href="compte.html">Votre compte</a>
+                            <a class="nav-link px-5" href="compte.php">Votre compte</a>
                         </div>
                     </div>
                 </div>
@@ -108,7 +108,10 @@
 
                             echo "<h4>" . $data['nom_obj'] . "</h4>";
                             echo "<h5>" . $data['prix'] . "€ </h5>";
-                            echo "<p><button id=panier>Ajouter au panier</button></p>";
+
+                            //$id = $data['id_vendeur'];
+                            echo "<center> <a href=ajout_pan.php?id=$id><img src='ajout_pan.jpg' name =" . "prod" . " height='50' width='170'> </a> </center>";
+
                             echo "<p><button id=notif>Notification</button></p>";
                             echo "</div>";
                             echo "</div>";
@@ -123,7 +126,10 @@
 
                                 echo "<h4>" . $data['nom_obj'] . "</h4>";
                                 echo "<h5>" . $data['prix'] . "€ </h5>";
-                                echo "<p><button id=panier>Ajouter au panier</button></p>";
+
+                                echo "<center> <a href=ajout_pan.php?id=$id><img src='ajout_pan.jpg' name =" . "prod" . " height='50' width='170'> </a> </center>";
+
+
                                 echo "<p><button id=notif>Notification</button></p>";
                                 echo "</div>";
                                 echo "</div>";

@@ -2,6 +2,7 @@
 
 /***************
  *                  CODE POUR SUPPRIMER UN VENDEUR
+ *                              peut renvoyer sur affich_item
  *                  CODE FONCTIONNEL
  * *************** */
 

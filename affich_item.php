@@ -1,14 +1,17 @@
-<!--
-    CODE INSCRIPTION NOUVEAU VENDEUR
+<?php
+session_start();
+/*********************
+ *              CODE AFFICHER TOUS LES ARTICLES D'UN VENDEUR
+ * ********************* */
 
-    SOURCES
-  
-    https://getbootstrap.com/docs/5.3/
-    https://getbootstrap.com/docs/5.2/examples/footers/
-  
-    google maps: https://blog.hubspot.com/website/how-to-embed-google-map-in-html
-    https://www.pierre-giraud.com/bootstrap-apprendre-cours/bouton/
-  -->
+//identifier BDD
+$database = "piscine";
+$db_handle = mysqli_connect('localhost', 'root', '');
+$db_found = mysqli_select_db($db_handle, $database);
+
+$id_vendeur = 1;
+
+?>
 
 <!DOCTYPE html>
 <html>
@@ -16,7 +19,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Compte Agora Francia</title>
+    <title>Parcourir Agora Francia</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link href="allstyles.css" type="text/css" rel="stylesheet">
 
@@ -32,10 +35,10 @@
 
         <div id="header" class="container-fluid">
 
-            <img src="logo.png" class="rounded mx-auto d-block" alt="logo">
+            <center><img src="logo.png" alt="logo"></center>
         </div>
 
-        <div id="navigation" class="container-fluid">
+        <div id="navigation" class="container-fluid" style="margin-top: 20px;">
             <nav class="navbar navbar-expand-lg bg-body-tertiary mx-auto">
                 <div class="container-fluid">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,71 +46,62 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav mx-auto">
-                            <a class="nav-link active px-5" aria-current="page" href="index.php">Accueil</a>
+                            <a class="nav-link active px-5" aria-current="page" href="index.html">Accueil</a>
                             <a class="nav-link px-5" href="parcourir.php">Tout Parcourir</a>
-                            <a class="nav-link px-5" href="notifications.php">Notifications</a>
-                            <a class="nav-link px-5" href="visu_panier.php">Panier</a>
-                            <a class="nav-link px-5" href="compte.php">Votre compte</a>
+                            <a class="nav-link px-5" href="notifications.html">Notifications</a>
+                            <a class="nav-link px-5" href="panier.html">Panier</a>
+                            <a class="nav-link px-5" href="compte.html">Votre compte</a>
                         </div>
                     </div>
                 </div>
             </nav>
         </div>
 
-        <div class="container-fluid" id="section">
-            <div class="container">
-                <br>
-                <ul class="nav nav-underline">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Vendeur</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="compte.html">Acheteur</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Admin</a>
-                    </li>
-                </ul>
-                <br>
-                <!--FORMULAIRE-->
-                <div class="text-center">
-                    <h3>Création du compte vendeur</h3>
-                </div>
 
-                <form class="square-form" action="ajout_vendeur.php" method="post">
-                    <div class="form-group">
-                        <label for="nom">Pseudo :</label>
-                        <input type="text" class="form-control" name="pseudo" id="pseudo" placeholder="Saisissez votre pseudo" required>
-                    </div>
+        <?php
+        if ($db_found) {
+            //on regarde si le vendeur vend des objets
+            $sql = "SELECT* FROM items WHERE id_vendeur=$id_vendeur";
+            $result = mysqli_query($db_handle, $sql);
 
-                    <div class="form-group">
-                        <label for="prenom">Mail :</label>
-                        <input type="text" class="form-control" name="mail_vendeur" id="mail_vendeur" placeholder="Saisissez votre adresse mail" required>
-                    </div>
+            if (($data = mysqli_fetch_assoc($result) == 0)) {
+                echo "<p>Vous ne proposez aucun article </p>";
+                //rediréction vers la page ajout produit
+                echo "<p>Souhaitez-vous ajouter un nouvel article ? </p>";
+                echo '<form method="post" action="add_item.php">';
+                echo '<button type="submit">Ajouter</button>';
+                echo '</form>';
+            } else {
+                //on affiche tous les articles du vendeur 
+                $sql = "SELECT* FROM items WHERE id_vendeur=$id_vendeur";
+                $result = mysqli_query($db_handle, $sql);
 
-                    <div class="form-group">
-                        <label for="mail">Photo :</label>
-                        <input type="text" class="form-control" name="photo_vendeur" id="photo_vendeur" placeholder="saisissez le chemin de la photo" required>
-                    </div>
+                echo "<h2>" . "Voici les articles :" . "</h2>";
+                echo "<table border='1'>";
+                echo "<tr>";
+                echo "<th>" . "nom_obj" . "</th>";
+                echo "<th>" . "photo" . "</th>";
+                echo "<th>" . "Prix" . "</th>";
+                //afficher le resultat
 
-                    <div class="form-group">
-                        <label for="mdp">Banniere :</label>
-                        <input type="text" class="form-control" name="banniere_vendeur" id="banniere_vendeur" placeholder="Saisissez le chemin de la banniere" required>
-                    </div>
+                while ($data = mysqli_fetch_assoc($result)) {
+                    echo "<tr>";
+                    echo "<td>" . $data['nom_obj'] . "</td>";
+                    //echo "<td>" . $data['photo1'] . "</td>";
+                    $image = $data['photo1'];
+                    echo "<td>" . "<img src='$image' height='150' width='150'>" . "</td>";
+                    echo "<td>" . $data['prix'] . "</td>";
 
-                    <div class="d-grid gap-2 col-6 mx-auto">
-                        <button type="submit" name="Valider">Créer</button>
-                    </div>
+                    echo "</tr>";
+                }
+                echo "</table>";
+            }
+        } else {
+            echo "<p> database not found</p>";
+        }
 
-                </form>
-            </div>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-
-        </div>
-
-
-
+        mysqli_close($db_handle);
+        ?>
         <div class="container-fluid" id="footer">
             <div class="container">
                 <footer class="py-5">
@@ -115,19 +109,18 @@
                         <div class="col-6 col-md-1 offset-md-1">
                             <h5>Navigation</h5>
                             <ul class="nav flex-column">
-                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Accueil</a></li>
+                                <li class="nav-item mb-2"><a href="index.html" class="nav-link p-0 text-muted">Accueil</a></li>
                                 <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Tout Parcourir</a></li>
-                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Notifications</a></li>
-                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Panier</a></li>
-                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Votre compte</a></li>
+                                <li class="nav-item mb-2"><a href="notifications.php" class="nav-link p-0 text-muted">Notifications</a></li>
+                                <li class="nav-item mb-2"><a href="panier.php" class="nav-link p-0 text-muted">Panier</a></li>
+                                <li class="nav-item mb-2"><a href="compte.php" class="nav-link p-0 text-muted">Votre compte</a></li>
                             </ul>
                         </div>
 
                         <div class="col-7 col-md-4 offset-md-2">
-                            <h5>Contact et réseaux sociaux</h5>
+                            <h5>Contact et reseaux sociaux</h5>
                             <ul class="nav flex-column">
-                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Mail:
-                                        agorafrancia.commerce@gmail.com</a></li>
+                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Mail: agorafrancia.commerce@gmail.com</a></li>
                                 <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Tél: 12 34 56 78 90</a></li>
                                 <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Instagram</a></li>
                                 <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Twitter</a></li>
@@ -136,25 +129,20 @@
                         </div>
 
                         <div class="col-md-4" id="map">
-                            <strong>
-                                <h5>Où sommes-nous situés?</h5>
-                            </strong>
+                            Ou est-ce notre magasin?
                             <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1033.460180458264!2d2.288410797944649!3d48.85248423190897!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sfr!4v1685393929817!5m2!1sen!2sfr" width="400" height="300" style="border:5px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                             </iframe>
                         </div>
 
 
                     </div>
-
                     <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
                         <p>© 2022 Agora Fracia™</p>
                     </div>
                 </footer>
             </div>
         </div>
-
     </div>
-
 </body>
 
 </html>

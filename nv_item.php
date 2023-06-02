@@ -1,6 +1,6 @@
 <!--
-    CODE INSCRIPTION NOUVEAU VENDEUR
-
+    CODE FORMULAIRE AJOUT PRODUIT               envoie sur add_item.php
+            CODE FONCTIONNEL
     SOURCES
   
     https://getbootstrap.com/docs/5.3/
@@ -71,28 +71,68 @@
                 <br>
                 <!--FORMULAIRE-->
                 <div class="text-center">
-                    <h3>Création du compte vendeur</h3>
+                    <h3>Ajout d'un nouveau produit</h3>
                 </div>
 
-                <form class="square-form" action="ajout_vendeur.php" method="post">
+                <form class="square-form" action="add_item.php" method="post">
                     <div class="form-group">
-                        <label for="nom">Pseudo :</label>
-                        <input type="text" class="form-control" name="pseudo" id="pseudo" placeholder="Saisissez votre pseudo" required>
+                        <label for="nom">Nom :</label>
+                        <input type="text" class="form-control" name="nom_obj" id="nom" placeholder="Saisissez le nom de l'article" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="prenom">Mail :</label>
-                        <input type="text" class="form-control" name="mail_vendeur" id="mail_vendeur" placeholder="Saisissez votre adresse mail" required>
+                        <label for="prenom">photo 1 :</label>
+                        <input type="text" class="form-control" name="photo1" id="prenom" placeholder="ajoutez une photo de l'article" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="prenom">photo 2 :</label>
+                        <input type="text" class="form-control" name="photo2" id="prenom" placeholder="ajoutez une photo de l'article">
+                    </div>
+                    <div class="form-group">
+                        <label for="prenom">photo 3 :</label>
+                        <input type="text" class="form-control" name="photo3" id="prenom" placeholder="ajoutez une photo de l'article">
+                    </div>
+                    <div class="form-group">
+                        <label for="prenom">photo 4 :</label>
+                        <input type="text" class="form-control" name="photo4" id="prenom" placeholder="ajoutez une photo de l'article">
                     </div>
 
                     <div class="form-group">
-                        <label for="mail">Photo :</label>
-                        <input type="text" class="form-control" name="photo_vendeur" id="photo_vendeur" placeholder="saisissez le chemin de la photo" required>
+                        <label for="descriptio">Description :</label>
+                        <input type="text" class="form-control" name="descriptio" id="descriptio" placeholder="Ajoutez une description" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="mdp">Banniere :</label>
-                        <input type="text" class="form-control" name="banniere_vendeur" id="banniere_vendeur" placeholder="Saisissez le chemin de la banniere" required>
+                        <label for="mdp">Prix :</label>
+                        <input type="text" class="form-control" name="prix" id="mdp" placeholder="Saisissez le prix de l'article" required>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="inputGroupSelect01">Méthode de vente</label>
+                        </div>
+                        <select name="methode_vente" class="custom-select" id="inputGroupSelect01">
+                            <option selected>Choose...</option>
+                            <option value="1">Enchères</option>
+                            <option value="2">Négociations</option>
+                            <option value="3">Vente immédiate</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="inputGroupSelect01">Catégorie</label>
+                        </div>
+                        <select name="categorie" class="custom-select" id="inputGroupSelect01">
+                            <option selected>Choose...</option>
+                            <option value="1">Rare</option>
+                            <option value="2">Haut de gamme</option>
+                            <option value="3">réguliers</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="mdp">Stock :</label>
+                        <input type="int" class="form-control" name="stock" id="stock" placeholder="Saisissez le prix de l'article" required>
                     </div>
 
                     <div class="d-grid gap-2 col-6 mx-auto">

@@ -19,9 +19,10 @@ echo '<link rel="stylesheet" type="text/css" href="panier.css">';
 $db_handle = mysqli_connect('localhost', 'root', '');
 $db_found = mysqli_select_db($db_handle, $database);
 
+
+
 //session du client
 $client_co = 'nom3';
-$nom_util = 'nom3';
 //mettre un blindage si personne n'est connecté
 
 if ($db_found) {
@@ -29,7 +30,7 @@ if ($db_found) {
     //il faut regarder si l'utilisateur est client ou vendeur 
     $sql = "SELECT * FROM acheteur WHERE nom_acheteur LIKE '%$client_co%' ";
     $result = mysqli_query($db_handle, $sql);
-    //si acheteur 
+    //si vendeur 
     if (($data = mysqli_fetch_assoc($result) != 0)) {
         // on regarde si l'acheteur a des articles dans son panier
         $sql = "SELECT * FROM panier p 
