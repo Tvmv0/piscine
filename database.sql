@@ -55,21 +55,49 @@ CREATE TABLE items (
  methode_vente int NOT NULL,
  id_vendeur int NOT NULL,
  nb_vendu int,
- stock int, 
+ stock int,
  FOREIGN KEY (id_vendeur) REFERENCES vendeur(id_vendeur)
 );
- 
-INSERT INTO items VALUES ('0','chaise','img_items/photo1_1.jpg','','','','description','500','1','1','1','5','');
-INSERT INTO items VALUES ('1','table','img_items/photo2_1.jpg','','','','description','200','1','3','1','10','');
-INSERT INTO items VALUES ('2','meuble','img_items/photo3_1.jpg','','','','description','20','2','1','2','2','');
-INSERT INTO items VALUES ('3','lunettes','img_items/photo4_1.jpg','','','','description','1000','2','2','2','60','');
-INSERT INTO items VALUES ('4','toilettes','img_items/photo5_1.jpg','','','','description','750','2','3','2','50','');
-INSERT INTO items VALUES ('5','chaies2','img_items/photo6_1.jpg','','','','description','50','3','3','2','8','');
-INSERT INTO items VALUES ('6','table2','img_items/photo7_1.jpg','','','','description','80','3','1','1','70','');
-INSERT INTO items VALUES ('7','table3','img_items/photo8_1.jpg','','','','description','100','3','2','1','3','');
-INSERT INTO items VALUES ('8','fauteuil','img_items/photo9_1.jpg','','','','description','250','1','1','2','4','');
-INSERT INTO items VALUES ('9','meuble','img_items/photo10_1.jpg','','','','description','800','1','2','2','0','');
- 
+
+INSERT INTO items VALUES ('0','arbre','img_items/photo1_1.jpg','','','','description','500','1','1','1','5','50');
+INSERT INTO items VALUES ('1','arbre','img_items/photo2_1.jpg','','','','description','200','1','3','1','10','50');
+INSERT INTO items VALUES ('2','meuble','img_items/photo3_1.jpg','','','','description','20','2','1','2','2','10');
+INSERT INTO items VALUES ('3','gateau chocolat','img_items/photo4_1.jpg','','','','description','1000','2','2','2','60','200');
+INSERT INTO items VALUES ('4','bonbon','img_items/photo5_1.jpg','','','','description','750','2','3','2','50','300');
+INSERT INTO items VALUES ('5','moulin à thé','img_items/photo6_1.jpg','','','','description','50','3','3','2','8','150');
+INSERT INTO items VALUES ('6','caviar','img_items/photo7_1.jpg','','','','description','700','1','3','3','0','1');
+INSERT INTO items VALUES ('7','table','img_items/photo8_1.jpg','','','','description','100','3','2','1','3','10');
+INSERT INTO items VALUES ('8','fauteuil','img_items/photo9_1.jpg','','','','description','250','1','1','2','4','5');
+INSERT INTO items VALUES ('9','meuble','img_items/photo10_1.jpg','','','','description','800','1','2','2','0','7');
+INSERT INTO items VALUES ('10','reacteur nucleraire','img_items/photo11_1.jpg','','','','description','80000','1','3','2','0','2');
+INSERT INTO items VALUES ('11','serre','img_items/photo12_1.jpg','','','','description','6000','2','3','1','0','1');
+INSERT INTO items VALUES ('12','velo','img_items/photo13_1.jpg','','','','description','310','3','1','4','0','20');
+INSERT INTO items VALUES ('13','trottinette','img_items/photo14_1.jpg','','','','description','250','3','1','1','0','20');
+INSERT INTO items VALUES ('14','nain de jardin','img_items/photo15_1.jpg','','','','description','100','3','1','4','0','10');
+INSERT INTO items VALUES ('15','fenêtre','img_items/photo16_1.jpg','','','','description','150','3','2','4','0','17');
+INSERT INTO items VALUES ('16','tutu rose','img_items/photo17_1.jpg','','','','description','35','3','2','4','0','5');
+INSERT INTO items VALUES ('17','audi tt rouge','img_items/photo18_1.jpg','','','','description','50000','2','2','4','0','5');
+INSERT INTO items VALUES ('18','audi r8 blanche','img_items/photo19_1.jpg','','','','description','90000','2','2','4','0','2');
+INSERT INTO items VALUES ('19','camaro ss jaune','img_items/photo20_1.jpg','','','','description','70000','2','1','4','0','1');
+INSERT INTO items VALUES ('20','tank','img_items/photo21_1.jpg','','','','description','60000','1','3','1','0','1');
+INSERT INTO items VALUES ('21','barbecue','img_items/photo22_1.jpg','','','','description','290','3','1','4','0','15');
+INSERT INTO items VALUES ('22','jeep','img_items/photo23_1.jpg','','','','description','90000','2','3','3','0','5');
+INSERT INTO items VALUES ('23','lot de jouets','img_items/photo24_1.jpg','','','','description','25','3','1','2','0','30');
+INSERT INTO items VALUES ('24','colt M4 A1','img_items/photo25_1.jpg','','','','description','7000','2','1','4','0','5');
+INSERT INTO items VALUES ('25','colt M45A1','img_items/photo26_1.jpg','','','','description','5000','2','3','4','0','5');
+INSERT INTO items VALUES ('26','glock 19 gen4','img_items/photo27_1.jpg','','','','description','2700','2','1','4','0','5');
+INSERT INTO items VALUES ('27','FN Scar L','img_items/photo28_1.jpg','','','','description','7000','2','3','4','1','6');
+INSERT INTO items VALUES ('28','fusil NERF','img_items/photo29_1.jpg','','','','description','80','3','1','4','0','12');
+INSERT INTO items VALUES ('29','M870','img_items/photo30_1.jpg','','','','description','1400','3','2','4','0','5');
+INSERT INTO items VALUES ('30','Desert eagle Golden','img_items/photo31_1.jpg','','','','description','10000','2','3','4','0','1');
+
+
+
+
+
+
+
+
 CREATE TABLE panier (
  id_panier int NOT NULL PRIMARY KEY AUTO_INCREMENT,
  id_item int not null,
