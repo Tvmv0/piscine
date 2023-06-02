@@ -1,5 +1,29 @@
 <?php
 session_start();
+$_SESSION['user'] = "";
+/****************
+ *                  CODE INSCRIPTION NOUVEAU CLIENT
+ *                      CELUI CI C'EST LE BON 
+ * **************** */
+
+//declaration des variables     pour acheteur
+
+
+$nom = isset($_POST["nom"]) ? $_POST["nom"] : "";
+$prenom = isset($_POST["prenom"]) ? $_POST["prenom"] : "";
+$mail = isset($_POST["mail"]) ? $_POST["mail"] : "";
+$mdp = isset($_POST["mdp"]) ? $_POST["mdp"] : "";
+
+//pour info paiement
+$num_rue = isset($_POST["num_rue"]) ? $_POST["num_rue"] : "";
+$nom_rue = isset($_POST["nom_rue"]) ? $_POST["nom_rue"] : "";
+$code_postal = isset($_POST["code_postal"]) ? $_POST["code_postal"] : "";
+$ville = isset($_POST["ville"]) ? $_POST["ville"] : "";
+$pays = isset($_POST["pays"]) ? $_POST["pays"] : "";
+$num_carte = isset($_POST["num_carte"]) ? $_POST["num_carte"] : "";
+$date_exp = isset($_POST["date_exp"]) ? $_POST["date_exp"] : "";
+$cvv = isset($_POST["cvv"]) ? $_POST["cvv"] : "";
+
 
 //identifier BDD
 $database = "piscine";
@@ -8,41 +32,48 @@ $database = "piscine";
 $db_handle = mysqli_connect('localhost', 'root', 'root');
 $db_found = mysqli_select_db($db_handle, $database);
 
-
 if ($db_found) {
-    if (isset($_POST["categorie1"])) {
-        $sql = "SELECT * FROM items WHERE categorie = 1";
+    if (($nom != "") && ($prenom != "")) {
+        $sql = "SELECT * FROM acheteur WHERE nom_acheteur LIKE '%$nom%' AND prenom_acheteur LIKE '%$prenom%'";
+
         $result = mysqli_query($db_handle, $sql);
-    } else if (isset($_POST["categorie2"])) {
-        $sql = "SELECT * FROM items WHERE categorie = 2";
-        $result = mysqli_query($db_handle, $sql);
-    } else if (isset($_POST["categorie3"])) {
-        $sql = "SELECT * FROM items WHERE categorie = 3";
-        $result = mysqli_query($db_handle, $sql);
-    } else if (isset($_POST["encheres"])) {
-        $sql = "SELECT * FROM items WHERE methode_vente = 1";
-        $result = mysqli_query($db_handle, $sql);
-    } else if (isset($_POST["negoc"])) {
-        $sql = "SELECT * FROM items WHERE methode_vente = 2";
-        $result = mysqli_query($db_handle, $sql);
-    } else if (isset($_POST["immed"])) {
-        $sql = "SELECT * FROM items WHERE methode_vente = 3";
-        $result = mysqli_query($db_handle, $sql);
+        //regarder s'il y a des resultats
+        if ((mysqli_num_rows($result) != 0)) {
+        } else {
+            //le client n'existe pas donc on l'ajoute dans la base de donnée
+            $sql = "INSERT INTO acheteur(nom_acheteur,prenom_acheteur,mail_acheteur,mdp_acheteur) 
+                           VALUES('$nom', '$prenom', '$mail','$mdp')";
+            $result = mysqli_query($db_handle, $sql);
+
+            //il faut récupérer l'ID du client
+            $id_client = mysqli_insert_id($db_handle);
+            //------------------------------------------------------------------ajout dans INFO_PAIEMENT
+            $sql = "INSERT INTO info_paiement(id_acheteur,num_rue,nom_rue,code_postal,ville,pays,num_carte,date_exp,cvv) 
+                                       VALUES('$id_client', '$num_rue', '$nom_rue','$code_postal', '$ville', '$pays','$num_carte','$date_exp','$cvv')";
+
+            $result = mysqli_query($db_handle, $sql);
+
+            //SELECT * FROM `acheteur` WHERE id_acheteur = 2;
+            $sql = "SELECT * FROM `acheteur` WHERE id_acheteur = $id_client;";
+            $result = mysqli_query($db_handle, $sql);
+            $data = mysqli_fetch_assoc($result);
+
+            $sql = "SELECT * FROM acheteur,info_paiement WHERE acheteur.id_acheteur = $id_client AND info_paiement.id_acheteur = acheteur.id_acheteur";
+            $result = mysqli_query($db_handle, $sql);
+            $data2 = mysqli_fetch_assoc($result);
+            
+        }
     } else {
-        $sql = "SELECT * FROM items ";
-        $result = mysqli_query($db_handle, $sql);
+        echo "<p>NON bAH ERREUR </p>";
     }
+} else {
+    echo "<p> database not found</p>";
+}
 
-    if (!($data = mysqli_fetch_assoc($result))) {
-        echo "<p>Aucun article trouvé</p>";
-    }
-} else
-    echo "db not found";
-
-//fermer la connexion
 mysqli_close($db_handle);
 ?>
 
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -67,7 +98,7 @@ mysqli_close($db_handle);
             <center><img src="logo.png" alt="logo"></center>
         </div>
 
-        <div id="navigation" class="container-fluid">
+        <div id="navigation" class="container-fluid" style="margin-top: 20px;">
             <nav class="navbar navbar-expand-lg bg-body-tertiary mx-auto">
                 <div class="container-fluid">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -90,70 +121,30 @@ mysqli_close($db_handle);
             <div class="container-fluid">
                 <div class="row">
 
-                    <div class="col-md-2 offset-md-1">
-                        <form action="categories.php" method="post">
-                            <div class="form-group">
-                                <h4>Catégorie produit</h4>
-                                <div class="form-check">
-                                    <button type="submit" name="categorie1" class="btn btn-sm">Articles rares</button>
-                                </div>
-                                <div class="form-check">
-                                    <button type="submit" name="categorie2" class="btn btn-sm">Articles Haut de gamme</button>
-                                </div>
-                                <div class="form-check">
-                                    <button type="submit" name="categorie3" class="btn btn-sm">Articles réguliers</button>
-                                </div>
+                        <center> <h2>Informations nouveau client</h2> </center>
+                        <br>
 
-                                <h4>Catégorie vente</h4>
-                                <div class="form-check">
-                                    <button type="submit" name="encheres" class="btn btn-sm">Achat immédiat</button>
-                                </div>
-                                <div class="form-check">
-                                    <button type="submit" name="negoc" class="btn btn-sm">Transaction vendeur-client</button>
-                                </div>
-                                <div class="form-check">
-                                    <button type="submit" name="immed" class="btn btn-sm">Meilleure offre</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-md-8">
-                        <?php
-                        
-                        echo "<div class='row'>";
+                            <?php
+                            echo "<center> ". $data['nom_acheteur'] . "</center>";
+                            echo "<br>";
+                            echo "<center> ". $data['prenom_acheteur'] . "</center>";
+                            echo "<br>";
+                            echo "<center> ". $data['mail_acheteur'] . "</center>";
 
-                        echo " <div class=" . "col-md-4" . ">";
-                        echo "<div class = card>";
-                        $image = $data['photo1'];
+                            echo "<br><br>";
+                            echo " <center> <h2>adresse de paiement</h2> </center> ";
 
-                        $id = $data['id_item']; 
-                        echo "<center> <a href=page_produit.php?id=$id><img src='$image' name =" . "prod" . " height='200' width='200'> </a> </center>";
+                            echo "<center> " . $data2['num_rue'] . ", " . $data2['nom_rue'] . "</center>";
+                            echo "<br>";
+                            echo "<center> ". "Ville: " . $data2['ville'] . "</center>";
+                            echo "<br>";
+                            echo "<center> ". "Pays: " . $data2['pays'] . "</center>";
 
-                        echo "<h4>" . $data['nom_obj'] . "</h4>";
-                        echo "<h5>" . $data['prix'] . "€ </h5>";
-                        echo "<p><button>Ajouter au panier</button></p>";
-                        echo "<p><button id=notif>Notification</button></p>";
-                        echo "</div>";
-                        echo "</div>";
+                            mysqli_close($db_handle);
 
-                        while ($data = mysqli_fetch_assoc($result)) {
-                            echo " <div class=" . "col-md-4" . ">";
-                            echo "<div class = card>";
-                            $image = $data['photo1'];
-
-                            $id = $data['id_item']; 
-                            echo "<center> <a href=page_produit.php?id=$id><img src='$image' name =" . "prod" . " height='200' width='200'> </a> </center>";
-
-                            echo "<h5>" . $data['prix'] . "€ </h5>";
-                            echo "<p><button>Ajouter au panier</button></p>";
-                            echo "<p><button id=notif>Notification</button></p>";
-                            echo "</div>";
-                            echo "</div>";
-                        }
-                        echo "</div>";
-                        echo "</div>";
-                        ?>
-                    </div>
+                            $_SESSION['user'] = $data['nom_acheteur'];
+                            echo "SESSION:" . $_SESSION['user'];
+                            ?>
                 </div>
             </div>
         </div>
@@ -167,7 +158,7 @@ mysqli_close($db_handle);
                             <h5>Navigation</h5>
                             <ul class="nav flex-column">
                                 <li class="nav-item mb-2"><a href="index.html" class="nav-link p-0 text-muted">Accueil</a></li>
-                                <li class="nav-item mb-2"><a href="parcourir.php" class="nav-link p-0 text-muted">Tout Parcourir</a></li>
+                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Tout Parcourir</a></li>
                                 <li class="nav-item mb-2"><a href="notifications.php" class="nav-link p-0 text-muted">Notifications</a></li>
                                 <li class="nav-item mb-2"><a href="panier.php" class="nav-link p-0 text-muted">Panier</a></li>
                                 <li class="nav-item mb-2"><a href="compte.php" class="nav-link p-0 text-muted">Votre compte</a></li>
