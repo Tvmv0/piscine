@@ -113,4 +113,15 @@
       .mainContainer{
           padding: 16px;
       }
-    
+      .register{
+        color: rgb(39, 38, 38);
+        text-align: center;
+      }
+      
+      .register a{
+        color: rgb(74, 146, 235);
+      }
+      
+      .register a:link{
+        text-decoration: none;
+      }
