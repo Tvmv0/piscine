@@ -1,4 +1,8 @@
 <!--
+
+    CODE CONNEXION VENDEUR
+
+
     SOURCES
   
     https://getbootstrap.com/docs/5.3/
@@ -41,11 +45,11 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav mx-auto">
-                            <a class="nav-link active px-5" aria-current="page" href="index.html">Accueil</a>
-                            <a class="nav-link px-5" href="parcourir.html">Tout Parcourir</a>
-                            <a class="nav-link px-5" href="notifications.html">Notifications</a>
-                            <a class="nav-link px-5" href="panier.html">Panier</a>
-                            <a class="nav-link px-5" href="compte.html">Votre compte</a>
+                            <a class="nav-link active px-5" aria-current="page" href="index.php">Accueil</a>
+                            <a class="nav-link px-5" href="parcourir.php">Tout Parcourir</a>
+                            <a class="nav-link px-5" href="notifications.php">Notifications</a>
+                            <a class="nav-link px-5" href="visu_panier.php">Panier</a>
+                            <a class="nav-link px-5" href="compte.php">Votre compte</a>
                         </div>
                     </div>
                 </div>
@@ -85,6 +89,8 @@
                             <!-- Password -->
                             <label for="mail">Email</label>
                             <input type="text" placeholder="Entrez votre mail" name="mail" required>
+
+                            <p class="register">Vous n'avez pas de compte? <a href="nv_vendeur.php">Inscrivez-vous!</a></p>
 
                             <!-- Submit button -->
                             <button type="submit" name="Connexion">Se connecter</button>
