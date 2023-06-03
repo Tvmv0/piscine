@@ -79,7 +79,12 @@ mysqli_close($db_handle);
                             <a class="nav-link px-5" href="parcourir.php">Tout Parcourir</a>
                             <a class="nav-link px-5" href="notifications.html">Notifications</a>
                             <a class="nav-link px-5" href="panier.html">Panier</a>
-                            <a class="nav-link px-5" href="compte.html">Votre compte</a>
+                            <?php
+                            if (!$_SESSION['username'])
+                                echo "<a class=" . "nav-link px-5" . " href=" . "connexion_client.php" . "> Connexion </a>";
+                            else
+                                echo "<a class=" . "nav-link px-5" . " href=" . "compte.php" . ">" . $_SESSION['username'] . "</a>";
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -119,19 +124,19 @@ mysqli_close($db_handle);
                     </div>
                     <div class="col-md-8">
                         <?php
-                        
+
                         echo "<div class='row'>";
 
                         echo " <div class=" . "col-md-4" . ">";
                         echo "<div class = card>";
                         $image = $data['photo1'];
 
-                        $id = $data['id_item']; 
+                        $id = $data['id_item'];
                         echo "<center> <a href=page_produit.php?id=$id><img src='$image' name =" . "prod" . " height='200' width='200'> </a> </center>";
 
                         echo "<h4>" . $data['nom_obj'] . "</h4>";
                         echo "<h5>" . $data['prix'] . "€ </h5>";
-                        echo "<p><button>Ajouter au panier</button></p>";
+                        echo "<center> <a href=ajout_pan.php?id=$id><img src='ajout_pan.jpg' name =" . "prod" . " height='50' width='170'> </a> </center>";
                         echo "<p><button id=notif>Notification</button></p>";
                         echo "</div>";
                         echo "</div>";
@@ -141,11 +146,12 @@ mysqli_close($db_handle);
                             echo "<div class = card>";
                             $image = $data['photo1'];
 
-                            $id = $data['id_item']; 
+                            $id = $data['id_item'];
                             echo "<center> <a href=page_produit.php?id=$id><img src='$image' name =" . "prod" . " height='200' width='200'> </a> </center>";
 
+                            echo "<h4>" . $data['nom_obj'] . "</h4>";
                             echo "<h5>" . $data['prix'] . "€ </h5>";
-                            echo "<p><button>Ajouter au panier</button></p>";
+                            echo "<center> <a href=ajout_pan.php?id=$id><img src='ajout_pan.jpg' name =" . "prod" . " height='50' width='170'> </a> </center>";
                             echo "<p><button id=notif>Notification</button></p>";
                             echo "</div>";
                             echo "</div>";

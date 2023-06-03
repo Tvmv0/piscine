@@ -61,8 +61,13 @@ $data = mysqli_fetch_assoc($result);
                             <a class="nav-link active px-5" aria-current="page" href="index.php">Accueil</a>
                             <a class="nav-link px-5" href="parcourir.php">Tout Parcourir</a>
                             <a class="nav-link px-5" href="notifications.html">Notifications</a>
-                            <a class="nav-link px-5" href="panier.html">Panier</a>
-                            <a class="nav-link px-5" href="compte.html">Votre compte</a>
+                            <a class="nav-link px-5" href="visu_panier.php">Panier</a>
+                            <?php
+                            if (!$_SESSION['user'])
+                                echo "<a class=" . "nav-link px-5" . " href=" . "connexion_client.php" . "> Connexion </a>";
+                            else
+                                echo "<a class=" . "nav-link px-5" . " href=" . "compte.php" . ">" . $_SESSION['user'] . "</a>";
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -109,7 +114,10 @@ $data = mysqli_fetch_assoc($result);
 
                         <br>
 
-                        <p><button id=panier>Ajouter au panier</button></p>
+                        <?php
+                        echo " <a href=ajout_pan.php?id=$id><img src='ajout_pan.jpg' name=" . "prod" . " height='50' width='170'> </a> ";
+                        ?>
+                         
                         <p><button id=notif>Notification</button></p>
 
                         <br>
@@ -140,48 +148,48 @@ $data = mysqli_fetch_assoc($result);
         </div>
 
 
-        <div class="container-fluid" id="footer">
-            <div class="container">
-                <footer class="py-5">
-                    <div class="row">
-                        <div class="col-6 col-md-1 offset-md-1">
-                            <h5>Navigation</h5>
-                            <ul class="nav flex-column">
-                                <li class="nav-item mb-2"><a href="index.html" class="nav-link p-0 text-muted">Accueil</a></li>
-                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Tout Parcourir</a></li>
-                                <li class="nav-item mb-2"><a href="notifications.php" class="nav-link p-0 text-muted">Notifications</a></li>
-                                <li class="nav-item mb-2"><a href="panier.php" class="nav-link p-0 text-muted">Panier</a></li>
-                                <li class="nav-item mb-2"><a href="compte.php" class="nav-link p-0 text-muted">Votre compte</a></li>
-                            </ul>
-                        </div>
+        <div class=" container-fluid" id="footer">
+                                <div class="container">
+                                    <footer class="py-5">
+                                        <div class="row">
+                                            <div class="col-6 col-md-1 offset-md-1">
+                                                <h5>Navigation</h5>
+                                                <ul class="nav flex-column">
+                                                    <li class="nav-item mb-2"><a href="index.html" class="nav-link p-0 text-muted">Accueil</a></li>
+                                                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Tout Parcourir</a></li>
+                                                    <li class="nav-item mb-2"><a href="notifications.php" class="nav-link p-0 text-muted">Notifications</a></li>
+                                                    <li class="nav-item mb-2"><a href="visu_panier.php" class="nav-link p-0 text-muted">Panier</a></li>
+                                                    <li class="nav-item mb-2"><a href="compte.php" class="nav-link p-0 text-muted">Votre compte</a></li>
+                                                </ul>
+                                            </div>
 
-                        <div class="col-7 col-md-4 offset-md-2">
-                            <h5>Contact et reseaux sociaux</h5>
-                            <ul class="nav flex-column">
-                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Mail: agorafrancia.commerce@gmail.com</a></li>
-                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Tél: 12 34 56 78 90</a></li>
-                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Instagram</a></li>
-                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Twitter</a></li>
-                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Facebook</a></li>
-                            </ul>
-                        </div>
+                                            <div class="col-7 col-md-4 offset-md-2">
+                                                <h5>Contact et reseaux sociaux</h5>
+                                                <ul class="nav flex-column">
+                                                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Mail: agorafrancia.commerce@gmail.com</a></li>
+                                                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Tél: 12 34 56 78 90</a></li>
+                                                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Instagram</a></li>
+                                                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Twitter</a></li>
+                                                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Facebook</a></li>
+                                                </ul>
+                                            </div>
 
-                        <div class="col-md-4" id="map">
-                            Ou est-ce notre magasin?
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1033.460180458264!2d2.288410797944649!3d48.85248423190897!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sfr!4v1685393929817!5m2!1sen!2sfr" width="400" height="300" style="border:5px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                            </iframe>
-                        </div>
+                                            <div class="col-md-4" id="map">
+                                                Ou est-ce notre magasin?
+                                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1033.460180458264!2d2.288410797944649!3d48.85248423190897!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sfr!4v1685393929817!5m2!1sen!2sfr" width="400" height="300" style="border:5px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                                                </iframe>
+                                            </div>
 
 
+                                        </div>
+
+                                        <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+                                            <p>© 2022 Agora Fracia™</p>
+                                        </div>
+                                    </footer>
+                                </div>
                     </div>
-
-                    <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-                        <p>© 2022 Agora Fracia™</p>
-                    </div>
-                </footer>
-            </div>
-        </div>
-    </div>
+                </div>
 </body>
 
 </html>

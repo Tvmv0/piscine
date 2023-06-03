@@ -1,76 +1,16 @@
 <?php
 session_start();
-$_SESSION['username'] = "";
-$_SESSION['userid'] = "";
-/****************
- *                  CODE INSCRIPTION NOUVEAU CLIENT
- *                      CELUI CI C'EST LE BON 
- * **************** */
-
-//declaration des variables     pour acheteur
-
-$nom = isset($_POST["nom"]) ? $_POST["nom"] : "";
-$prenom = isset($_POST["prenom"]) ? $_POST["prenom"] : "";
-$mail = isset($_POST["mail"]) ? $_POST["mail"] : "";
-$mdp = isset($_POST["mdp"]) ? $_POST["mdp"] : "";
-
-//pour info paiement
-$num_rue = isset($_POST["num_rue"]) ? $_POST["num_rue"] : "";
-$nom_rue = isset($_POST["nom_rue"]) ? $_POST["nom_rue"] : "";
-$code_postal = isset($_POST["code_postal"]) ? $_POST["code_postal"] : "";
-$ville = isset($_POST["ville"]) ? $_POST["ville"] : "";
-$pays = isset($_POST["pays"]) ? $_POST["pays"] : "";
-$num_carte = isset($_POST["num_carte"]) ? $_POST["num_carte"] : "";
-$date_exp = isset($_POST["date_exp"]) ? $_POST["date_exp"] : "";
-$cvv = isset($_POST["cvv"]) ? $_POST["cvv"] : "";
-
+/*********************
+ *              CODE AFFICHER TOUS LES ARTICLES D'UN VENDEUR
+ * ********************* */
 
 //identifier BDD
 $database = "piscine";
-
-//connectez-vous dans BDD
-$db_handle = mysqli_connect('localhost', 'root', 'root');
+$db_handle = mysqli_connect('localhost', 'root', '');
 $db_found = mysqli_select_db($db_handle, $database);
 
-if ($db_found) {
-    if (($nom != "") && ($prenom != "")) {
-        $sql = "SELECT * FROM acheteur WHERE nom_acheteur LIKE '%$nom%' AND prenom_acheteur LIKE '%$prenom%'";
+$id_vendeur = 1;
 
-        $result = mysqli_query($db_handle, $sql);
-        //regarder s'il y a des resultats
-        if ((mysqli_num_rows($result) != 0)) {
-        } else {
-            //le client n'existe pas donc on l'ajoute dans la base de donnée
-            $sql = "INSERT INTO acheteur(nom_acheteur,prenom_acheteur,mail_acheteur,mdp_acheteur) 
-                           VALUES('$nom', '$prenom', '$mail','$mdp')";
-            $result = mysqli_query($db_handle, $sql);
-
-            //il faut récupérer l'ID du client
-            $id_client = mysqli_insert_id($db_handle);
-            //------------------------------------------------------------------ajout dans INFO_PAIEMENT
-            $sql = "INSERT INTO info_paiement(id_acheteur,num_rue,nom_rue,code_postal,ville,pays,num_carte,date_exp,cvv) 
-                                       VALUES('$id_client', '$num_rue', '$nom_rue','$code_postal', '$ville', '$pays','$num_carte','$date_exp','$cvv')";
-
-            $result = mysqli_query($db_handle, $sql);
-
-            //SELECT * FROM `acheteur` WHERE id_acheteur = 2;
-            $sql = "SELECT * FROM `acheteur` WHERE id_acheteur = $id_client;";
-            $result = mysqli_query($db_handle, $sql);
-            $data = mysqli_fetch_assoc($result);
-
-            $sql = "SELECT * FROM acheteur,info_paiement WHERE acheteur.id_acheteur = $id_client AND info_paiement.id_acheteur = acheteur.id_acheteur";
-            $result = mysqli_query($db_handle, $sql);
-            $data2 = mysqli_fetch_assoc($result);
-            
-        }
-    } else {
-        echo "<p>NON bAH ERREUR </p>";
-    }
-} else {
-    echo "<p> database not found</p>";
-}
-
-mysqli_close($db_handle);
 ?>
 
 <!DOCTYPE html>
@@ -106,7 +46,7 @@ mysqli_close($db_handle);
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav mx-auto">
-                            <a class="nav-link active px-5" aria-current="page" href="index.php">Accueil</a>
+                            <a class="nav-link active px-5" aria-current="page" href="index.html">Accueil</a>
                             <a class="nav-link px-5" href="parcourir.php">Tout Parcourir</a>
                             <a class="nav-link px-5" href="notifications.html">Notifications</a>
                             <a class="nav-link px-5" href="panier.html">Panier</a>
@@ -117,40 +57,51 @@ mysqli_close($db_handle);
             </nav>
         </div>
 
-        <div class="container-fluid" id="section" style="margin-top: 50px;">
-            <div class="container-fluid">
-                <div class="row">
 
-                        <center> <h2>Informations nouveau client</h2> </center>
-                        <br>
+        <?php
+        if ($db_found) {
+            //on regarde si le vendeur vend des objets
+            $sql = "SELECT* FROM items WHERE id_vendeur=$id_vendeur";
+            $result = mysqli_query($db_handle, $sql);
 
-                            <?php
-                            echo "<center> ". $data['nom_acheteur'] . " " . "</center>";
-                            echo "<center> ". $data['prenom_acheteur'] . "</center>";
-                            echo "<br>";
-                            echo "<center> ". $data['mail_acheteur'] . "</center>";
+            if (($data = mysqli_fetch_assoc($result) == 0)) {
+                echo "<p>Vous ne proposez aucun article </p>";
+                //rediréction vers la page ajout produit
+                echo "<p>Souhaitez-vous ajouter un nouvel article ? </p>";
+                echo '<form method="post" action="add_item.php">';
+                echo '<button type="submit">Ajouter</button>';
+                echo '</form>';
+            } else {
+                //on affiche tous les articles du vendeur 
+                $sql = "SELECT* FROM items WHERE id_vendeur=$id_vendeur";
+                $result = mysqli_query($db_handle, $sql);
 
-                            echo "<br><br>";
-                            echo " <center> <h2>adresse de paiement</h2> </center> ";
+                echo "<h2>" . "Voici les articles :" . "</h2>";
+                echo "<table border='1'>";
+                echo "<tr>";
+                echo "<th>" . "nom_obj" . "</th>";
+                echo "<th>" . "photo" . "</th>";
+                echo "<th>" . "Prix" . "</th>";
+                //afficher le resultat
 
-                            echo "<center> " . $data2['num_rue'] . ", " . $data2['nom_rue'] . "</center>";
-                            echo "<br>";
-                            echo "<center> ". "Ville: " . $data2['ville'] . "</center>";
-                            echo "<br>";
-                            echo "<center> ". "Pays: " . $data2['pays'] . "</center>";
+                while ($data = mysqli_fetch_assoc($result)) {
+                    echo "<tr>";
+                    echo "<td>" . $data['nom_obj'] . "</td>";
+                    //echo "<td>" . $data['photo1'] . "</td>";
+                    $image = $data['photo1'];
+                    echo "<td>" . "<img src='$image' height='150' width='150'>" . "</td>";
+                    echo "<td>" . $data['prix'] . "</td>";
 
-                            $_SESSION['username'] = $data['nom_acheteur'];
-                            $_SESSION['userid'] = $data['id_acheteur'];
-                            
-                            echo "SESSION:" . $_SESSION['user'];
+                    echo "</tr>";
+                }
+                echo "</table>";
+            }
+        } else {
+            echo "<p> database not found</p>";
+        }
 
-                            mysqli_close($db_handle);
-                            ?>
-                </div>
-            </div>
-        </div>
-
-
+        mysqli_close($db_handle);
+        ?>
         <div class="container-fluid" id="footer">
             <div class="container">
                 <footer class="py-5">
@@ -185,7 +136,6 @@ mysqli_close($db_handle);
 
 
                     </div>
-
                     <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
                         <p>© 2022 Agora Fracia™</p>
                     </div>

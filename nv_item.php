@@ -1,6 +1,6 @@
 <!--
-    CODE INSCRIPTION CLIENT
-
+    CODE FORMULAIRE AJOUT PRODUIT               envoie sur add_item.php
+            CODE FONCTIONNEL
     SOURCES
   
     https://getbootstrap.com/docs/5.3/
@@ -9,10 +9,6 @@
     google maps: https://blog.hubspot.com/website/how-to-embed-google-map-in-html
     https://www.pierre-giraud.com/bootstrap-apprendre-cours/bouton/
   -->
-
-<?php
-session_start();
-?>
 
 <!DOCTYPE html>
 <html>
@@ -35,7 +31,8 @@ session_start();
     <div id="wrapper" class="container-fluid">
 
         <div id="header" class="container-fluid">
-        <center> <img src="logo.png" alt="logo"> </center>
+
+            <img src="logo.png" class="rounded mx-auto d-block" alt="logo">
         </div>
 
         <div id="navigation" class="container-fluid">
@@ -47,9 +44,10 @@ session_start();
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav mx-auto">
                             <a class="nav-link active px-5" aria-current="page" href="index.php">Accueil</a>
-                            <a class="nav-link px-5" href="parcourir.html">Tout Parcourir</a>
-                            <a class="nav-link px-5" href="notifications.html">Notifications</a>
-                            <a class="nav-link px-5" href="panier.html">Panier</a>
+                            <a class="nav-link px-5" href="parcourir.php">Tout Parcourir</a>
+                            <a class="nav-link px-5" href="notifications.php">Notifications</a>
+                            <a class="nav-link px-5" href="visu_panier.php">Panier</a>
+                            <a class="nav-link px-5" href="compte.php">Votre compte</a>
                         </div>
                     </div>
                 </div>
@@ -61,10 +59,10 @@ session_start();
                 <br>
                 <ul class="nav nav-underline">
                     <li class="nav-item">
-                        <a class="nav-link" href="compte.html">Vendeur</a>
+                        <a class="nav-link active" aria-current="page" href="#">Vendeur</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Acheteur</a>
+                        <a class="nav-link" href="compte.html">Acheteur</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Admin</a>
@@ -73,68 +71,70 @@ session_start();
                 <br>
                 <!--FORMULAIRE-->
                 <div class="text-center">
-                    <h3>Indentification de votre compte client</h3>
+                    <h3>Ajout d'un nouveau produit</h3>
                 </div>
 
-                <form class="square-form" action="inscription_client.php" method="post">
+                <form class="square-form" action="add_item.php" method="post">
                     <div class="form-group">
                         <label for="nom">Nom :</label>
-                        <input type="text" class="form-control" name="nom" id="nom" placeholder="Entrez votre Nom" required>
+                        <input type="text" class="form-control" name="nom_obj" id="nom" placeholder="Saisissez le nom de l'article" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="prenom">Prénom :</label>
-                        <input type="text" class="form-control" name="prenom" id="prenom" placeholder="Entrez votre Prénom" required>
+                        <label for="prenom">photo 1 :</label>
+                        <input type="text" class="form-control" name="photo1" id="prenom" placeholder="ajoutez une photo de l'article" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="prenom">photo 2 :</label>
+                        <input type="text" class="form-control" name="photo2" id="prenom" placeholder="ajoutez une photo de l'article">
+                    </div>
+                    <div class="form-group">
+                        <label for="prenom">photo 3 :</label>
+                        <input type="text" class="form-control" name="photo3" id="prenom" placeholder="ajoutez une photo de l'article">
+                    </div>
+                    <div class="form-group">
+                        <label for="prenom">photo 4 :</label>
+                        <input type="text" class="form-control" name="photo4" id="prenom" placeholder="ajoutez une photo de l'article">
                     </div>
 
                     <div class="form-group">
-                        <label for="mail">Email :</label>
-                        <input type="text" class="form-control" name="mail" id="mail" placeholder="Entrez votre email" required>
+                        <label for="descriptio">Description :</label>
+                        <input type="text" class="form-control" name="descriptio" id="descriptio" placeholder="Ajoutez une description" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="mdp">Mot de Passe :</label>
-                        <input type="password" class="form-control" name="mdp" id="mdp" placeholder="Entrez votre mot de passe" required>
+                        <label for="mdp">Prix :</label>
+                        <input type="text" class="form-control" name="prix" id="mdp" placeholder="Saisissez le prix de l'article" required>
                     </div>
 
-                    <br>
-                    <p>Adresse : </p>
-                    <div class="form-group">
-                        <label for="num_rue">N° rue :</label>
-                        <input type="int" class="form-control" name="num_rue" id="num_rue" placeholder="Entrez le numero de la rue" required>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="inputGroupSelect01">Méthode de vente</label>
+                        </div>
+                        <select name="methode_vente" class="custom-select" id="inputGroupSelect01">
+                            <option selected>Choose...</option>
+                            <option value="1">Enchères</option>
+                            <option value="2">Négociations</option>
+                            <option value="3">Vente immédiate</option>
+                        </select>
                     </div>
-                    <div class="form-group">
-                        <label for="nom_rue">Rue :</label>
-                        <input type="text" class="form-control" name="nom_rue" id="nom_rue" placeholder="Entrez le nom de la rue" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="code_postal">Code postal :</label>
-                        <input type="int" class="form-control" name="code_postal" id="code_postal" placeholder="Entrez le code postal" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="ville">Ville :</label>
-                        <input type="text" class="form-control" name="ville" id="ville" placeholder="Entrez votre ville" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="ville">Pays :</label>
-                        <input type="text" class="form-control" name="pays" id="pays" placeholder="Entrez votre Pays" required>
-                    </div>
-                    <br>
-                    <div class="form-group">
-                        <label for="paiement">Information de Paiement :</label>
-                        <input type="int" class="form-control" name="num_carte" id="num_carte" placeholder="Entrez vos numéros de carte" required>
-                        <input type="date" class="form-control" name="date_exp" id="date" placeholder="Entrez la date d'expiration" required>
-                        <input type="int" class="form-control" name="cvv" id="cvv" placeholder="CVV" required>
 
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="inputGroupSelect01">Catégorie</label>
+                        </div>
+                        <select name="categorie" class="custom-select" id="inputGroupSelect01">
+                            <option selected>Choose...</option>
+                            <option value="1">Rare</option>
+                            <option value="2">Haut de gamme</option>
+                            <option value="3">réguliers</option>
+                        </select>
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            Si une offre est faite sur un article, vous êtes sous contrat légal pour l'achter si le vendeur accepte
-                            votre offre.
-                        </label>
-                        <p class="register">Vous avez deja un compte ? <a href="compteclient.html">Connectez-vous !</a></p>
+                    <div class="form-group">
+                        <label for="mdp">Stock :</label>
+                        <input type="int" class="form-control" name="stock" id="stock" placeholder="Saisissez le prix de l'article" required>
                     </div>
+
                     <div class="d-grid gap-2 col-6 mx-auto">
                         <button type="submit" name="Valider">Créer</button>
                     </div>
