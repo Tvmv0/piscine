@@ -141,15 +141,15 @@ CREATE TABLE info_paiement (
  FOREIGN KEY (id_acheteur) REFERENCES acheteur(id_acheteur)
 );
 
-INSERT INTO acheteur VALUES('0','0','12','rue du Port','75012','Paris','France','1234567843214567','22/07/28','667');
-INSERT INTO acheteur VALUES('1','1','10','avenue des Pommiers','92130','Issy','France','9876476512438997','12/08/25','647');
-INSERT INTO acheteur VALUES('2','2','46','rue Pierre Louvrier','92140','Clamart','France','1357365499876661','31/12/29','397');
-INSERT INTO acheteur VALUES('3','3','2','rue Nelaton','75015','Paris','France','6786466433217640','17/04/28','421');
-INSERT INTO acheteur VALUES('4','4','31','rue Pasteur','75015','Paris','France','5675221243348721','02/09/27','147');
-INSERT INTO acheteur VALUES('5','5','89','rue Mouftard','75005','Paris','France','7764424476553531','19/06/28','777');
-INSERT INTO acheteur VALUES('6','6','19','boulevard Saint-Germain','75005','Paris','France','6753995634363422','28/01/28','442');
-INSERT INTO acheteur VALUES('7','7','77','boulevard de Barbes','75018','Paris','France','6653634498651231','08/07/31','480');
-INSERT INTO acheteur VALUES('8','8','100','rue Moinshuit','92140','Paris','France','2331875643427643','09/02/24','920');
-INSERT INTO acheteur VALUES('9','9','91','boulevard Odeon','75006','PariS','France','7786452399751112','14/02/28','614');
-INSERT INTO acheteur VALUES('10','10','66','avenue des Cerfs','78000','Versailles','France','6657434488641923','31/09/29','340');
-INSERT INTO acheteur VALUES('11','11','51','rue Vila','75015','Paris','France','7854143265534323','26/01/26','771');
+INSERT INTO info_paiement VALUES('0','0','12','rue du Port','75012','Paris','France','1234567843214567','22/07/28','667');
+INSERT INTO info_paiement VALUES('1','1','10','avenue des Pommiers','92130','Issy','France','9876476512438997','12/08/25','647');
+INSERT INTO info_paiement VALUES('2','2','46','rue Pierre Louvrier','92140','Clamart','France','1357365499876661','31/12/29','397');
+INSERT INTO info_paiement VALUES('3','3','2','rue Nelaton','75015','Paris','France','6786466433217640','17/04/28','421');
+INSERT INTO info_paiement VALUES('4','4','31','rue Pasteur','75015','Paris','France','5675221243348721','02/09/27','147');
+INSERT INTO info_paiement VALUES('5','5','89','rue Mouftard','75005','Paris','France','7764424476553531','19/06/28','777');
+INSERT INTO info_paiement VALUES('6','6','19','boulevard Saint-Germain','75005','Paris','France','6753995634363422','28/01/28','442');
+INSERT INTO info_paiement VALUES('7','7','77','boulevard de Barbes','75018','Paris','France','6653634498651231','08/07/31','480');
+INSERT INTO info_paiement VALUES('8','8','100','rue Moinshuit','92140','Paris','France','2331875643427643','09/02/24','920');
+INSERT INTO info_paiement VALUES('9','9','91','boulevard Odeon','75006','PariS','France','7786452399751112','14/02/28','614');
+INSERT INTO info_paiement VALUES('10','10','66','avenue des Cerfs','78000','Versailles','France','6657434488641923','31/09/29','340');
+INSERT INTO info_paiement VALUES('11','11','51','rue Vila','75015','Paris','France','7854143265534323','26/01/26','771');
