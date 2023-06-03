@@ -14,7 +14,7 @@ echo '<link rel="stylesheet" type="text/css" href="panier.css">';
 
 
 //connectez-vous dans BDD
-$db_handle = mysqli_connect('localhost', 'root', '');
+$db_handle = mysqli_connect('localhost', 'root', 'root');
 $db_found = mysqli_select_db($db_handle, $database);
 $id = $_GET['id'];
 
@@ -46,8 +46,6 @@ if ($db_found) {
             $result = mysqli_query($db_handle, $sql);
             echo "<p> L'article vient d'être ajouté</p>";
             //on lui propose d'afficher son panier
-
-
 
             echo "<p>Souhaitez-vous voir votre panier ? </p>";
             echo '<form method="post" action="visu_panier.php">';

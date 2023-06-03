@@ -1,8 +1,4 @@
 <!--
-
-    CODE CONNEXION VENDEUR
-
-
     SOURCES
   
     https://getbootstrap.com/docs/5.3/
@@ -48,7 +44,7 @@
                             <a class="nav-link active px-5" aria-current="page" href="index.php">Accueil</a>
                             <a class="nav-link px-5" href="parcourir.php">Tout Parcourir</a>
                             <a class="nav-link px-5" href="notifications.php">Notifications</a>
-                            <a class="nav-link px-5" href="visu_panier.php">Panier</a>
+                            <a class="nav-link px-5" href="panier.php">Panier</a>
                             <a class="nav-link px-5" href="compte.php">Votre compte</a>
                         </div>
                     </div>
@@ -65,7 +61,7 @@
                             <a class="nav-link active" aria-current="page" href="#">Vendeur</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="compteclient.html">Acheteur</a>
+                            <a class="nav-link" href="connexion_client.php">Acheteur</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Admin</a>
@@ -89,8 +85,6 @@
                             <!-- Password -->
                             <label for="mail">Email</label>
                             <input type="text" placeholder="Entrez votre mail" name="mail" required>
-
-                            <p class="register">Vous n'avez pas de compte? <a href="nv_vendeur.php">Inscrivez-vous!</a></p>
 
                             <!-- Submit button -->
                             <button type="submit" name="Connexion">Se connecter</button>

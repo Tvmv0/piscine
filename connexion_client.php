@@ -9,6 +9,9 @@ SOURCES
     google maps: https://blog.hubspot.com/website/how-to-embed-google-map-in-html
     https://www.pierre-giraud.com/bootstrap-apprendre-cours/bouton/
   -->
+  <?php
+  session_start();
+  ?>
 
 <!DOCTYPE html>
 <html>
@@ -31,8 +34,7 @@ SOURCES
     <div id="wrapper" class="container-fluid">
 
         <div id="header" class="container-fluid">
-
-            <img src="logo.png" class="rounded mx-auto d-block" alt="logo">
+        <center> <img src="logo.png" alt="logo"> </center>
         </div>
 
         <div id="navigation" class="container-fluid">
@@ -47,7 +49,6 @@ SOURCES
                             <a class="nav-link px-5" href="parcourir.php">Tout Parcourir</a>
                             <a class="nav-link px-5" href="notifications.php">Notifications</a>
                             <a class="nav-link px-5" href="visu_panier.php">Panier</a>
-                            <a class="nav-link px-5" href="compte.php">Votre compte</a>
                         </div>
                     </div>
                 </div>
@@ -60,7 +61,7 @@ SOURCES
                     <br>
                     <ul class="nav nav-underline">
                         <li class="nav-item">
-                            <a class="nav-link" href="compte.php">Vendeur</a>
+                            <a class="nav-link" href="co_vendeur.php">Vendeur</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">Acheteur</a>
@@ -88,7 +89,7 @@ SOURCES
                             <label for="mdp">Mot de passe</label>
                             <input type="text" placeholder="Entrez votre mot de passe" name="mdp" required>
 
-                            <p class="register">Vous n'avez pas de compte? <a href="nouveauclient.html">Inscrivez-vous!</a></p>
+                            <p class="register">Vous n'avez pas de compte? <a href="nouveauclient.php">Inscrivez-vous!</a></p>
 
                             <!-- Submit button -->
                             <button type="submit" name="Connexion">Se connecter</button>

@@ -47,7 +47,6 @@
                             <a class="nav-link px-5" href="parcourir.php">Tout Parcourir</a>
                             <a class="nav-link px-5" href="notifications.php">Notifications</a>
                             <a class="nav-link px-5" href="visu_panier.php">Panier</a>
-                            <a class="nav-link px-5" href="compte.php">Votre compte</a>
                         </div>
                     </div>
                 </div>

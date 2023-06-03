@@ -10,6 +10,10 @@
     https://www.pierre-giraud.com/bootstrap-apprendre-cours/bouton/
   -->
 
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -31,8 +35,7 @@
     <div id="wrapper" class="container-fluid">
 
         <div id="header" class="container-fluid">
-
-            <img src="logo.png" class="rounded mx-auto d-block" alt="logo">
+        <center> <img src="logo.png" alt="logo"> </center>
         </div>
 
         <div id="navigation" class="container-fluid">
@@ -44,10 +47,9 @@
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav mx-auto">
                             <a class="nav-link active px-5" aria-current="page" href="index.php">Accueil</a>
-                            <a class="nav-link px-5" href="parcourir.php">Tout Parcourir</a>
-                            <a class="nav-link px-5" href="notifications.php">Notifications</a>
-                            <a class="nav-link px-5" href="visu_panier.php">Panier</a>
-                            <a class="nav-link px-5" href="compte.php">Votre compte</a>
+                            <a class="nav-link px-5" href="parcourir.html">Tout Parcourir</a>
+                            <a class="nav-link px-5" href="notifications.html">Notifications</a>
+                            <a class="nav-link px-5" href="panier.html">Panier</a>
                         </div>
                     </div>
                 </div>
@@ -92,7 +94,7 @@
 
                     <div class="form-group">
                         <label for="mdp">Mot de Passe :</label>
-                        <input type="text" class="form-control" name="mdp" id="mdp" placeholder="Entrez votre mot de passe" required>
+                        <input type="password" class="form-control" name="mdp" id="mdp" placeholder="Entrez votre mot de passe" required>
                     </div>
 
                     <br>

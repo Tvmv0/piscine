@@ -49,13 +49,8 @@ session_start();
                             <a class="nav-link active px-5" aria-current="page" href="index.php">Accueil</a>
                             <a class="nav-link px-5" href="#">Tout Parcourir</a>
                             <a class="nav-link px-5" href="notifications.html">Notifications</a>
-                            <a class="nav-link px-5" href="panier.php">Panier</a>
-                            <?php
-                            if (!isset($_SESSION['username']))
-                                echo "<a class=" . "nav-link px-5" . " href=" . "connexion_client.php" . "> Connexion </a>";
-                            else
-                                echo "<a class=" . "nav-link px-5" . " href=" . "compte.php" . ">" . $_SESSION['username'] . "</a>";
-                            ?>
+                            <a class="nav-link px-5" href="panier.html">Panier</a>
+                            <a class="nav-link px-5" href="compte.html">Votre compte</a>
                         </div>
                     </div>
                 </div>
@@ -66,82 +61,8 @@ session_start();
             <div class="container-fluid">
                 <div class="row">
 
-                    <div class="col-md-2 offset-md-1">
-                        <form action="categories.php" method="post">
-                            <div class="form-group">
-
-                                <h4>Catégorie produit</h4>
-                                <div class="form-check">
-                                    <button type="submit" name="categorie1" class="btn btn-sm">Articles rares</button>
-                                </div>
-                                <div class="form-check">
-                                    <button type="submit" name="categorie2" class="btn btn-sm">Articles Haut de gamme</button>
-                                </div>
-                                <div class="form-check">
-                                    <button type="submit" name="categorie3" class="btn btn-sm">Articles réguliers</button>
-                                </div>
-
-                                <h4>Catégorie vente</h4>
-                                <div class="form-check">
-                                    <button type="submit" name="encheres" class="btn btn-sm">Achat immédiat</button>
-                                </div>
-                                <div class="form-check">
-                                    <button type="submit" name="negoc" class="btn btn-sm">Transaction vendeur-client</button>
-                                </div>
-                                <div class="form-check">
-                                    <button type="submit" name="immed" class="btn btn-sm">Meilleure offre</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-md-8">
-                        <div class="row">
-                            <?php
-                            $database = "piscine";
-                            $db_handle = mysqli_connect('localhost', 'root', '');
-                            $db_found = mysqli_select_db($db_handle, $database);
-
-                            $sql = "SELECT * FROM items ";
-
-                            $result = mysqli_query($db_handle, $sql);
-                            $data = mysqli_fetch_assoc($result);
-
-                            echo " <div class=" . "col-md-4" . ">";
-                            echo "<div class = card>";
-                            $image = $data['photo1'];
-
-                            $id = $data['id_item'];
-                            echo "<center> <a href=page_produit.php?id=$id><img src='$image' name =" . "prod" . " height='200' width='200'> </a> </center>";
-
-                            echo "<h4>" . $data['nom_obj'] . "</h4>";
-                            echo "<h5>" . $data['prix'] . "€ </h5>";
-
-                            echo "<center> <a href=ajout_pan.php?id=$id><img src='ajout_pan.jpg' name =" . "prod" . " height='50' width='170'> </a> </center>";
-                            echo "<p><button id=notif>Notification</button></p>";
-                            echo "</div>";
-                            echo "</div>";
-
-                            while ($data = mysqli_fetch_assoc($result)) {
-                                echo " <div class=" . "col-md-4" . ">";
-                                echo "<div class = card>";
-                                $image = $data['photo1'];
-                                $id = $data['id_item'];
-
-                                echo "<center> <a href=page_produit.php?id=$id><img src='$image' name =" . "prod" . " height='200' width='200'> </a> </center>";
-
-                                echo "<h4>" . $data['nom_obj'] . "</h4>";
-                                echo "<h5>" . $data['prix'] . "€ </h5>";
-                                echo "<center> <a href=ajout_pan.php?id=$id><img src='ajout_pan.jpg' name =" . "prod" . " height='50' width='170'> </a> </center>";
-                                echo "<p><button id=notif>Notification</button></p>";
-                                echo "</div>";
-                                echo "</div>";
-                            }
-                            echo "</div>";
-
-                            mysqli_close($db_handle);
-                            ?>
-                        </div>
-                    </div>
+                        <?php session_destroy(); ?>
+                        hello
                 </div>
             </div>
         </div>
