@@ -83,7 +83,7 @@ session_start();
       <div class="row">
 
         <center>
-          <h1>Nos produits preféres</h1>
+          <h1>Nos produits préférés</h1>
         </center>
         <div class="col-md-8 offset-md-2">
           <br><br>
@@ -116,11 +116,11 @@ session_start();
 
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" style="color: black;">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
+              <span class="sr-only">Précédent</span>
             </a>
             <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next" style="color: black;">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
+              <span class="sr-only">Suivant</span>
             </a>
           </div>
 
@@ -148,18 +148,17 @@ session_start();
           </div>
 
           <div class="col-7 col-md-4 offset-md-2">
-            <h5>Contact et reseaux sociaux</h5>
+            <h5>Contact et réseaux sociaux</h5>
             <ul class="nav flex-column">
               <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Mail: agorafrancia.commerce@gmail.com</a></li>
               <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Tél: 12 34 56 78 90</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Instagram</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Twitter</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Facebook</a></li>
+              <li class="nav-item mb-2"><a href="https://www.instagram.com/rchassagne/" class="nav-link p-0 text-muted">Instagram</a></li>
+              <li class="nav-item mb-2"><a href="https://www.facebook.com/profile.php?id=100012939098511" class="nav-link p-0 text-muted">Facebook</a></li>
             </ul>
           </div>
 
           <div class="col-md-4" id="map">
-            Ou est-ce notre magasin?
+            <h5>Où sommes-nous situés?</h5>
             <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1033.460180458264!2d2.288410797944649!3d48.85248423190897!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sfr!4v1685393929817!5m2!1sen!2sfr" width="400" height="300" style="border:5px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
             </iframe>
           </div>
