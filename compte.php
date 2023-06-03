@@ -1,8 +1,4 @@
 <!--
-
-    CODE CONNEXION VENDEUR
-
-
     SOURCES
   
     https://getbootstrap.com/docs/5.3/
@@ -20,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Compte Agora Francia</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link href="allstyles.css" type="text/css" rel="stylesheet">
+    <link href="stylecompte.css" type="text/css" rel="stylesheet">
 
 </head>
 
@@ -48,7 +44,7 @@
                             <a class="nav-link active px-5" aria-current="page" href="index.php">Accueil</a>
                             <a class="nav-link px-5" href="parcourir.php">Tout Parcourir</a>
                             <a class="nav-link px-5" href="notifications.php">Notifications</a>
-                            <a class="nav-link px-5" href="visu_panier.php">Panier</a>
+                            <a class="nav-link px-5" href="panier.php">Panier</a>
                             <a class="nav-link px-5" href="compte.php">Votre compte</a>
                         </div>
                     </div>
@@ -65,7 +61,7 @@
                             <a class="nav-link active" aria-current="page" href="#">Vendeur</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="compteclient.html">Acheteur</a>
+                            <a class="nav-link" href="connexion_client.php">Acheteur</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Admin</a>
@@ -90,8 +86,6 @@
                             <label for="mail">Email</label>
                             <input type="text" placeholder="Entrez votre mail" name="mail" required>
 
-                            <p class="register">Vous n'avez pas de compte? <a href="nv_vendeur.php">Inscrivez-vous!</a></p>
-
                             <!-- Submit button -->
                             <button type="submit" name="Connexion">Se connecter</button>
 
@@ -109,11 +103,11 @@
                                     <div class="col-6 col-md-1 offset-md-1">
                                         <h5>Navigation</h5>
                                         <ul class="nav flex-column">
-                                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Accueil</a></li>
-                                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Tout Parcourir</a></li>
-                                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Notifications</a></li>
-                                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Panier</a></li>
-                                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Votre compte</a></li>
+                                            <li class="nav-item mb-2"><a href="index.php" class="nav-link p-0 text-muted">Accueil</a></li>
+                                            <li class="nav-item mb-2"><a href="parcourir.php" class="nav-link p-0 text-muted">Tout Parcourir</a></li>
+                                            <li class="nav-item mb-2"><a href="notifications.php" class="nav-link p-0 text-muted">Notifications</a></li>
+                                            <li class="nav-item mb-2"><a href="panier.php" class="nav-link p-0 text-muted">Panier</a></li>
+                                            <li class="nav-item mb-2"><a href="compte.php" class="nav-link p-0 text-muted">Votre compte</a></li>
                                         </ul>
                                     </div>
 
@@ -124,7 +118,7 @@
                                                     agorafrancia.commerce@gmail.com</a></li>
                                             <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Tél: 12 34 56 78 90</a></li>
                                             <li class="nav-item mb-2"><a href="https://www.instagram.com/r3mi.lml/" class="nav-link p-0 text-muted">Instagram</a></li>
-                                            <li class="nav-item mb-2"><a href="https://www.facebook.com/profile.php?id=100012939098511" class="nav-link p-0 text-muted">Facebook</a></li>
+                                            <li class="nav-item mb-2"><a href="https://www.facebook.com/rchassagne/" class="nav-link p-0 text-muted">Facebook</a></li>
                                         </ul>
                                     </div>
 

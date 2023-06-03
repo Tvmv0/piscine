@@ -10,6 +10,10 @@
     https://www.pierre-giraud.com/bootstrap-apprendre-cours/bouton/
   -->
 
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -18,7 +22,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Compte Agora Francia</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link href="allstyles.css" type="text/css" rel="stylesheet">
+    <link href="stylecompte.css" type="text/css" rel="stylesheet">
 
 </head>
 
@@ -31,8 +35,7 @@
     <div id="wrapper" class="container-fluid">
 
         <div id="header" class="container-fluid">
-
-            <img src="logo.png" class="rounded mx-auto d-block" alt="logo">
+        <center> <img src="logo.png" alt="logo"> </center>
         </div>
 
         <div id="navigation" class="container-fluid">
@@ -44,10 +47,9 @@
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav mx-auto">
                             <a class="nav-link active px-5" aria-current="page" href="index.php">Accueil</a>
-                            <a class="nav-link px-5" href="parcourir.php">Tout Parcourir</a>
-                            <a class="nav-link px-5" href="notifications.php">Notifications</a>
-                            <a class="nav-link px-5" href="visu_panier.php">Panier</a>
-                            <a class="nav-link px-5" href="compte.php">Votre compte</a>
+                            <a class="nav-link px-5" href="parcourir.html">Tout Parcourir</a>
+                            <a class="nav-link px-5" href="notifications.html">Notifications</a>
+                            <a class="nav-link px-5" href="panier.html">Panier</a>
                         </div>
                     </div>
                 </div>
@@ -59,7 +61,7 @@
                 <br>
                 <ul class="nav nav-underline">
                     <li class="nav-item">
-                        <a class="nav-link" href="compte.html">Vendeur</a>
+                        <a class="nav-link" href="compte.php">Vendeur</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Acheteur</a>
@@ -92,7 +94,7 @@
 
                     <div class="form-group">
                         <label for="mdp">Mot de Passe :</label>
-                        <input type="text" class="form-control" name="mdp" id="mdp" placeholder="Entrez votre mot de passe" required>
+                        <input type="password" class="form-control" name="mdp" id="mdp" placeholder="Entrez votre mot de passe" required>
                     </div>
 
                     <br>
@@ -128,10 +130,10 @@
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
-                            Si une offre est faite sur un article, vous êtes sous contrat légal pour l'achter si le vendeur accepte
+                            Si une offre est faite sur un article, vous êtes sous contrat légal pour l'acheter si le vendeur accepte
                             votre offre.
                         </label>
-                        <p class="register">Vous avez deja un compte ? <a href="compteclient.html">Connectez-vous !</a></p>
+                        <p class="register">Vous avez déjà un compte ? <a href="connexion_client.php">Connectez-vous !</a></p>
                     </div>
                     <div class="d-grid gap-2 col-6 mx-auto">
                         <button type="submit" name="Valider">Créer</button>
@@ -153,10 +155,10 @@
                         <div class="col-6 col-md-1 offset-md-1">
                             <h5>Navigation</h5>
                             <ul class="nav flex-column">
-                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Accueil</a></li>
-                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Tout Parcourir</a></li>
-                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Notifications</a></li>
-                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Panier</a></li>
+                                <li class="nav-item mb-2"><a href="index.php" class="nav-link p-0 text-muted">Accueil</a></li>
+                                <li class="nav-item mb-2"><a href="parcourir.php" class="nav-link p-0 text-muted">Tout Parcourir</a></li>
+                                <li class="nav-item mb-2"><a href="notifications.php" class="nav-link p-0 text-muted">Notifications</a></li>
+                                <li class="nav-item mb-2"><a href="panier.php" class="nav-link p-0 text-muted">Panier</a></li>
                                 <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Votre compte</a></li>
                             </ul>
                         </div>
@@ -167,8 +169,7 @@
                                 <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Mail:
                                         agorafrancia.commerce@gmail.com</a></li>
                                 <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Tél: 12 34 56 78 90</a></li>
-                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Instagram</a></li>
-                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Twitter</a></li>
+                                <li class="nav-item mb-2"><a href="https://www.instagram.com/mg20a/" class="nav-link p-0 text-muted">Instagram</a></li>
                                 <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Facebook</a></li>
                             </ul>
                         </div>

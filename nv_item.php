@@ -155,8 +155,8 @@
                         <div class="col-6 col-md-1 offset-md-1">
                             <h5>Navigation</h5>
                             <ul class="nav flex-column">
-                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Accueil</a></li>
-                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Tout Parcourir</a></li>
+                                <li class="nav-item mb-2"><a href="index.php" class="nav-link p-0 text-muted">Accueil</a></li>
+                                <li class="nav-item mb-2"><a href="parcourir.php" class="nav-link p-0 text-muted">Tout Parcourir</a></li>
                                 <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Notifications</a></li>
                                 <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Panier</a></li>
                                 <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Votre compte</a></li>
@@ -169,8 +169,7 @@
                                 <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Mail:
                                         agorafrancia.commerce@gmail.com</a></li>
                                 <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Tél: 12 34 56 78 90</a></li>
-                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Instagram</a></li>
-                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Twitter</a></li>
+                                <li class="nav-item mb-2"><a href="https://www.instagram.com/r3mi.lml/" class="nav-link p-0 text-muted">Instagram</a></li>
                                 <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Facebook</a></li>
                             </ul>
                         </div>
