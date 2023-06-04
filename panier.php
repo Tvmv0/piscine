@@ -1,13 +1,10 @@
 <?php
 session_start();
-
 /********************
 
         CODE POUR VISUALISER LES ARTICLES DANS LE PANIER
                             +
         BLINDAGE SI UTILISATEUR EST CLIENT OU VENDEUR
-                            +
-                SUPPRESSION DE LARTICLE DANS LE PANIER
 
 
  *******************/
@@ -23,6 +20,8 @@ $db_handle = mysqli_connect('localhost', 'root', '');
 $db_found = mysqli_select_db($db_handle, $database);
 
 ?>
+
+
 
 
 <!DOCTYPE html>
@@ -71,78 +70,109 @@ $db_found = mysqli_select_db($db_handle, $database);
 
         <div class="col-md-8">
             <div class="row">
-                <h3>Votre Panier : </h3>
+
                 <?php
+                //session du client
                 $client_co = $_SESSION['username'];
-                $sql = "SELECT * FROM items ";
-                //il faut regarder si l'utilisateur est client ou vendeur 
-                $sql = "SELECT * FROM acheteur WHERE nom_acheteur LIKE '%$client_co%' ";
-                $result = mysqli_query($db_handle, $sql);
+                //mettre un blindage si personne n'est connecté
+                if ($db_found) {
 
-                //si acheteur 
-                if (($data = mysqli_fetch_assoc($result) != 0)) {
-                    // on regarde si l'acheteur a des articles dans son panier
-                    //--------------------------------------------------------------A MODIFIER 
-                    //on regarde si il y a assez de stock 
-                    $sql = "SELECT * FROM panier p 
-                            INNER JOIN acheteur a 
-                            ON a.id_acheteur = p.id_acheteur
-                            AND a.nom_acheteur LIKE '%$client_co%' ";
+                    //il faut regarder si l'utilisateur est client ou vendeur 
+                    $sql = "SELECT * FROM acheteur WHERE nom_acheteur LIKE '%$client_co%' ";
                     $result = mysqli_query($db_handle, $sql);
-
-
-                    if (($data = mysqli_fetch_assoc($result) == 0)) {
-                        echo "<p>Votre panier est vide</p>";
-                        echo "<p>Souhaitez-vous ajouter un article à votre panier ? </p>";
-                        echo '<form method="post" action="parcourir.php">';
-                        echo '<button type="submit">Acceder</button>';
-                        echo '</form>';
-                        //on peut mettre un lien pour le rediriger vers "TOUT PARCOURIR"
-                    } else {
-                        //on affiche les articles du client
-                        $sql = "SELECT * FROM items i 
-                                INNER JOIN panier p 
-                                ON i.id_item=p.id_item
+                    //si vendeur 
+                    if (($data = mysqli_fetch_assoc($result) != 0)) {
+                        // on regarde si l'acheteur a des articles dans son panier
+                        $sql = "SELECT * FROM panier p 
                                 INNER JOIN acheteur a 
                                 ON a.id_acheteur = p.id_acheteur
-                                WHERE a.nom_acheteur LIKE '%$client_co%'";
+                                AND a.nom_acheteur LIKE '%$client_co%' ";
+                        //$sql = "SELECT * FROM items i INNER JOIN panier p ON i.id_item = p.id_item AND p.id_acheteur = '$client_co' ";
                         $result = mysqli_query($db_handle, $sql);
-                        $data = mysqli_fetch_assoc($result);
 
-                        echo " <div class=" . "col-md-4" . ">";
-                        echo "<div class = card>";
-                        $image = $data['photo1'];
 
-                        $id = $data['id_item'];
-                        echo "<center> <a href=suppPanier.php?id=$id><img src='$image' name =" . "prod" . " height='200' width='200'> </a> </center>";
+                        if (($data = mysqli_fetch_assoc($result) == 0)) {
+                            echo "<h3>Votre Panier est vide </h3>";
+                            echo "<h5>Voulez-vous ajouter des articles ? </h5>";
+                            echo '<form method="POST" action="parcourir.php">';
+                            echo "<p><button id=ajout_item>Ajouter </button></p>";
+                            echo '</form>';
+                            //on peut mettre un lien pour le rediriger vers "TOUT PARCOURIR"
+                        } else {
+                            echo "<h3>Votre Panier : </h3>";
+                            echo "<table border=\"1\">";
+                            echo "<tr>";
+                            echo "<th>" . "nom_obj" . "</th>";
+                            echo "<th>" . "prix" . "</th>";
+                            echo "<th>" . "photo" . "</th>";
+                            echo "</tr>";
 
-                        echo "<h4>" . $data['nom_obj'] . "</h4>";
-                        echo "<h5>" . $data['prix'] . "€ </h5>";
+                            $tot_pan = 0;
+                            //on affiche les articles du client
+                            $sql = "SELECT * FROM items i 
+                                    INNER JOIN panier p 
+                                    ON i.id_item=p.id_item
+                                    INNER JOIN acheteur a 
+                                    ON a.id_acheteur = p.id_acheteur
+                                    WHERE a.nom_acheteur LIKE '%$client_co'";
+                            $result = mysqli_query($db_handle, $sql);
+                            $data = mysqli_fetch_assoc($result);
 
-                        echo "<center> <a href=suppPanier.php?id=$id><img src='suppPanier.jpg' name =" . "prod" . " height='80' width='170'> </a> </center>";
-                        echo "</div>";
-                        echo "</div>";
-
-                        while ($data = mysqli_fetch_assoc($result)) {
                             echo " <div class=" . "col-md-4" . ">";
                             echo "<div class = card>";
                             $image = $data['photo1'];
-                            $id = $data['id_item'];
 
+                            $id = $data['id_item'];
                             echo "<center> <a href=page_produit.php?id=$id><img src='$image' name =" . "prod" . " height='200' width='200'> </a> </center>";
 
                             echo "<h4>" . $data['nom_obj'] . "</h4>";
                             echo "<h5>" . $data['prix'] . "€ </h5>";
+                            $tot_pan += $data['prix'];
                             echo "<center> <a href=suppPanier.php?id=$id><img src='suppPanier.jpg' name =" . "prod" . " height='80' width='170'> </a> </center>";
                             echo "</div>";
                             echo "</div>";
-                        }
-                        echo "</div>";
 
-                        echo "<center> <a href=payer.php?id=$id><img src='payer.jpg' name =" . "prod" . " height='50' width='170'> </a> </center>";
+                            while ($data = mysqli_fetch_assoc($result)) {
+                                echo " <div class=" . "col-md-4" . ">";
+                                echo "<div class = card>";
+                                $image = $data['photo1'];
+                                $id = $data['id_item'];
+
+                                echo "<center> <a href=page_produit.php?id=$id><img src='$image' name =" . "prod" . " height='200' width='200'> </a> </center>";
+
+                                echo "<h4>" . $data['nom_obj'] . "</h4>";
+                                echo "<h5>" . $data['prix'] . "€ </h5>";
+                                $tot_pan += $data['prix'];
+                                echo "<center> <a href=suppPanier.php?id=$id><img src='suppPanier.jpg' name =" . "prod" . " height='80' width='170'> </a> </center>";
+                                echo "</div>";
+                                echo "</div>";
+                            }
+                            echo "</div>";
+
+                            echo "<br>";
+                            echo "<h5> Total :" . $tot_pan . " € </h5>";
+                            echo " <a href=payer.php?id=$tot_pan><img src='payer.jpg' name =" . "prod" . " height='50' width='170'> </a>";
+                        }
+                    } else {
+                        echo "<p> Vous n'etes pas un client</p>";
+                        // on regarde s'il est vendeur 
+                        $sql = "SELECT * FROM vendeur WHERE pseudo LIKE '%$client_co%'";
+                        $result = mysqli_query($db_handle, $sql);
+
+                        if (($data = mysqli_fetch_assoc($result) != 0)) {
+                            //il est vendeur donc on lui propose d'ajouter des articles à la vente
+                            echo "<p>Voulez-vous ajouter des items ? ";
+                            echo '<form method="POST" action="ajout_item.php">';
+                            echo "<p><button id=ajout_item>Ajouter </button></p>";
+                            echo '</form>';
+                        } else {
+                            echo "<p>erreur</p>";
+                        }
                     }
                 }
-                mysqli_close($db_handle);
+
+
+
                 ?>
             </div>
         </div>

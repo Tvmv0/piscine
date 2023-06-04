@@ -9,7 +9,7 @@ $database = "piscine";
 $db_handle = mysqli_connect('localhost', 'root', '');
 $db_found = mysqli_select_db($db_handle, $database);
 
-$id_vendeur = 1;
+$id_vendeur = $_SESSION['username'];
 
 ?>
 
@@ -65,9 +65,9 @@ $id_vendeur = 1;
             $result = mysqli_query($db_handle, $sql);
 
             if (($data = mysqli_fetch_assoc($result) == 0)) {
-                echo "<p>Vous ne proposez aucun article </p>";
+                echo "<h4>Vous ne proposez aucun article </h4>";
                 //rediréction vers la page ajout produit
-                echo "<p>Souhaitez-vous ajouter un nouvel article ? </p>";
+                echo "<h5>Souhaitez-vous ajouter un nouvel article ? </h5>";
                 echo '<form method="post" action="add_item.php">';
                 echo '<button type="submit">Ajouter</button>';
                 echo '</form>';

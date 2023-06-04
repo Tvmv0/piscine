@@ -22,7 +22,7 @@ echo '<link rel="stylesheet" type="text/css" href="panier.css">';
 $db_handle = mysqli_connect('localhost', 'root', '');
 $db_found = mysqli_select_db($db_handle, $database);
 
-$prix = $_GET['id'];
+//$prix = $_GET['id'];
 
 ?>
 
@@ -72,32 +72,41 @@ $prix = $_GET['id'];
         </div>
         <div class="col-md-8">
             <div class="row">
-                <h3>Votre Panier : </h3>
+                <h3>Paiement effectué avec succès </h3>
+                <h4>Merci pour votre achat</h4>
                 <?php
-                $prix = $_GET['id'];
+                //$prix = $_GET['id'];
                 $client_co = $_SESSION['username'];
                 $idC = $_SESSION['usernid'];
-                //on vérifie les info paiement 
-                $sql = "SELECT * FROM info_paiement WHERE id_acheteur ='$idC' ";
 
+                //on accede au panier du client 
+                $sql = "SELECT * FROM panier WHERE id_acheteur = '$idC'";
                 $result = mysqli_query($db_handle, $sql);
-                if ($data = mysqli_fetch_assoc($result) == 0) {
-                    echo "<h5>  VOUS N'AVEZ PAS RENSEIGNE VOS INFORMATIONS DE PAIEMENT</h5>";
-                } else {
-                    echo "<h5>  On vérifie vos informations</h5>";
+                $data = mysqli_fetch_assoc($result);
 
-                    $sql = "SELECT * FROM info_paiement WHERE id_acheteur ='$idC' ";
-                    $result = mysqli_query($db_handle, $sql);
 
-                    $data = mysqli_fetch_assoc($result);
-                    //on affiche les informations de la carte 
-                    echo "<h5>Numéro de carte : " . $data['num_carte'] . " </h5>";
-                    echo "<h5>Date d'expiration : " . $data['date_exp'] . " </h5>";
-                    echo "<h5>CVV : " . $data['cvv'] . " </h5>";
-                    echo "<h5>Souhaitez- vous valider ? </h5>";
-                    echo "<a href=valider.php?><img src='valider.jpg' name =" . "prod" . " height='50' width='170'> </a>";
-                }
+                //while ($data = mysqli_fetch_assoc($result)) {
+                $idpan = $data['id_panier'];
+                $idiii = $data['id_item'];
+                //ON RECUPERE LA VALEUR DU STOCK DE L4ARTICLE
+                $sql = "SELECT * FROM items WHERE id_item = '$idiii'";      //désolé ruru pour cette variable j'espere que tu ne la verras pas
+                $result = mysqli_query($db_handle, $sql);
+                $data = mysqli_fetch_assoc($result);
+                $stock = $data['stock'];
+                $stock--;
 
+                //on actualise le stock de l'article
+
+                $sql = "UPDATE items SET stock = '$stock' WHERE id_item = '$idiii'";
+                $result = mysqli_query($db_handle, $sql);
+                //$data = mysqli_fetch_assoc($result);
+                $sql = "DELETE FROM panier WHERE id_panier = $idpan";
+                $result = mysqli_query($db_handle, $sql);
+
+
+                header("Location: valider.php");
+                exit;
+                // }
 
 
                 mysqli_close($db_handle);

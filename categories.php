@@ -5,7 +5,7 @@ session_start();
 $database = "piscine";
 
 //connectez-vous dans BDD
-$db_handle = mysqli_connect('localhost', 'root', 'root');
+$db_handle = mysqli_connect('localhost', 'root', '');
 $db_found = mysqli_select_db($db_handle, $database);
 
 
@@ -77,8 +77,8 @@ mysqli_close($db_handle);
                         <div class="navbar-nav mx-auto">
                             <a class="nav-link active px-5" aria-current="page" href="index.php">Accueil</a>
                             <a class="nav-link px-5" href="parcourir.php">Tout Parcourir</a>
-                            <a class="nav-link px-5" href="notifications.html">Notifications</a>
-                            <a class="nav-link px-5" href="panier.html">Panier</a>
+                            <a class="nav-link px-5" href="notifications.php">Notifications</a>
+                            <a class="nav-link px-5" href="panier.php">Panier</a>
                             <?php
                             if (!$_SESSION['username'])
                                 echo "<a class=" . "nav-link px-5" . " href=" . "connexion_client.php" . "> Connexion </a>";
