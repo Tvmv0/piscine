@@ -121,29 +121,29 @@ mysqli_close($db_handle);
             <div class="container-fluid">
                 <div class="row">
 
-                        <center> <h2>Informations nouveau client</h2> </center>
+                        <center> <h1>Bienvenue!</h1> </center>
                         <br>
 
                             <?php
-                            echo "<center> ". $data['nom_acheteur'] . " " . "</center>";
-                            echo "<center> ". $data['prenom_acheteur'] . "</center>";
+                            echo "<center> ". "Nom:" .$data['nom_acheteur'] . " " . "</center>";
+                            echo "<center> ". "Prénom:".$data['prenom_acheteur'] . "</center>";
                             echo "<br>";
-                            echo "<center> ". $data['mail_acheteur'] . "</center>";
+                            echo "<center> ". "Mail:" . $data['mail_acheteur'] . "</center>";
 
                             echo "<br><br>";
-                            echo " <center> <h2>adresse de paiement</h2> </center> ";
+                            echo " <center> <h2>Adresse de paiement</h2> </center> ";
 
-                            echo "<center> " . $data2['num_rue'] . ", " . $data2['nom_rue'] . "</center>";
+                            echo "<center> " . "Adresse:".$data2['num_rue'] . ", " . $data2['nom_rue'] . "</center>";
                             echo "<br>";
                             echo "<center> ". "Ville: " . $data2['ville'] . "</center>";
                             echo "<br>";
                             echo "<center> ". "Pays: " . $data2['pays'] . "</center>";
+                            echo "<br>";
+                            echo "<center> ". "Code postal: " . $data2['code_postal'] . "</center>";
 
                             $_SESSION['username'] = $data['nom_acheteur'];
                             $_SESSION['userid'] = $data['id_acheteur'];
                             
-                            echo "SESSION:" . $_SESSION['user'];
-
                             mysqli_close($db_handle);
                             ?>
                 </div>

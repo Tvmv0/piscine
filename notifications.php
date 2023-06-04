@@ -10,6 +10,20 @@
 
 <?php
 session_start();
+$_SESSION['notif'] = "";
+$_SESSION['prix'] = "";
+
+$database = "piscine";
+
+//connectez-vous dans BDD
+$db_handle = mysqli_connect('localhost', 'root', 'root');
+$db_found = mysqli_select_db($db_handle, $database);
+$id = $_GET['id'];
+
+$sql = "SELECT * FROM items WHERE id_item = $id";
+$result = mysqli_query($db_handle, $sql);
+$data = mysqli_fetch_assoc($result);
+$prix = $data['prix'];
 ?>
 
 
@@ -47,10 +61,10 @@ session_start();
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav mx-auto">
                             <a class="nav-link active px-5" aria-current="page" href="index.php">Accueil</a>
-                            <a class="nav-link px-5" href="#">Tout Parcourir</a>
-                            <a class="nav-link px-5" href="notifications.html">Notifications</a>
-                            <a class="nav-link px-5" href="panier.html">Panier</a>
-                            <a class="nav-link px-5" href="compte.html">Votre compte</a>
+                            <a class="nav-link px-5" href="parcourir.php">Tout Parcourir</a>
+                            <a class="nav-link px-5" href="page_notification.php">Notifications</a>
+                            <a class="nav-link px-5" href="visu_panierer.php">Panier</a>
+                            <a class="nav-link px-5" href="page_compte.php">Votre compte</a>
                         </div>
                     </div>
                 </div>
@@ -60,9 +74,12 @@ session_start();
         <div class="container-fluid" id="section" style="margin-top: 50px;">
             <div class="container-fluid">
                 <div class="row">
-
-                        <?php session_destroy(); ?>
-                        hello
+                    <center><h2>Notifications activés! Vous recevrez une notification dés que le prix (<?php echo $prix; ?>€) du produit baisse.</h2></center>
+                    
+                    <?php 
+                    $_SESSION['notif'] = $id;
+                    $_SESSION['prix'] = $prix; 
+                    ?>
                 </div>
             </div>
         </div>

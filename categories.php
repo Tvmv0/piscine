@@ -77,8 +77,8 @@ mysqli_close($db_handle);
                         <div class="navbar-nav mx-auto">
                             <a class="nav-link active px-5" aria-current="page" href="index.php">Accueil</a>
                             <a class="nav-link px-5" href="parcourir.php">Tout Parcourir</a>
-                            <a class="nav-link px-5" href="notifications.html">Notifications</a>
-                            <a class="nav-link px-5" href="panier.html">Panier</a>
+                            <a class="nav-link px-5" href="page_notifications.php">Notifications</a>
+                            <a class="nav-link px-5" href="visu_panier.php">Panier</a>
                             <?php
                             if (!$_SESSION['username'])
                                 echo "<a class=" . "nav-link px-5" . " href=" . "connexion_client.php" . "> Connexion </a>";
@@ -136,8 +136,8 @@ mysqli_close($db_handle);
 
                         echo "<h4>" . $data['nom_obj'] . "</h4>";
                         echo "<h5>" . $data['prix'] . "€ </h5>";
-                        echo "<center> <a href=ajout_pan.php?id=$id><img src='ajout_pan.jpg' name =" . "prod" . " height='50' width='170'> </a> </center>";
-                        echo "<p><button id=notif>Notification</button></p>";
+                        //echo "<center> <a href=ajout_pan.php?id=$id><img src='ajout_pan.jpg' name =" . "prod" . " height='50' width='170'> </a> </center>";
+                        //echo "<p><button id=notif>Notification</button></p>";
                         echo "</div>";
                         echo "</div>";
 
@@ -151,8 +151,9 @@ mysqli_close($db_handle);
 
                             echo "<h4>" . $data['nom_obj'] . "</h4>";
                             echo "<h5>" . $data['prix'] . "€ </h5>";
-                            echo "<center> <a href=ajout_pan.php?id=$id><img src='ajout_pan.jpg' name =" . "prod" . " height='50' width='170'> </a> </center>";
-                            echo "<p><button id=notif>Notification</button></p>";
+                            //echo "<center> <a href=ajout_pan.php?id=$id><img src='ajout_pan.jpg' name =" . "prod" . " height='50' width='170'> </a> </center>";
+                            //echo "<center> <a href=notifications.php?id=$id><img src='notif.jpg' name =" . "prod" . " height='50' width='170'> </a> </center>";
+                            echo "<br><br>";
                             echo "</div>";
                             echo "</div>";
                         }
@@ -174,7 +175,7 @@ mysqli_close($db_handle);
                             <ul class="nav flex-column">
                                 <li class="nav-item mb-2"><a href="index.html" class="nav-link p-0 text-muted">Accueil</a></li>
                                 <li class="nav-item mb-2"><a href="parcourir.php" class="nav-link p-0 text-muted">Tout Parcourir</a></li>
-                                <li class="nav-item mb-2"><a href="notifications.php" class="nav-link p-0 text-muted">Notifications</a></li>
+                                <li class="nav-item mb-2"><a href="page_notifications.php" class="nav-link p-0 text-muted">Notifications</a></li>
                                 <li class="nav-item mb-2"><a href="panier.php" class="nav-link p-0 text-muted">Panier</a></li>
                                 <li class="nav-item mb-2"><a href="compte.php" class="nav-link p-0 text-muted">Votre compte</a></li>
                             </ul>

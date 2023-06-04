@@ -20,32 +20,27 @@ $db_found = mysqli_select_db($db_handle, $database);
 
 //si le bouton validé est cliqué
 if (isset($_POST["Connexion"])) {
-    if ($db_found) {
-        //on cherche le client
-        if (($mail != "") && ($mdp != "")) {
-            $sql = "SELECT * FROM acheteur WHERE mail_acheteur LIKE '%$mail%' AND mdp_acheteur LIKE '%$mdp%'";
-        }
-
-        $result = mysqli_query($db_handle, $sql);
-        if ((mysqli_num_rows($result) == 0)) {
-            echo "<p>Le compte n'existe pas.</p>";
-        } else {
-            $result = mysqli_query($db_handle, $sql);
-            $data = mysqli_fetch_assoc($result);
-
-            $_SESSION['username'] = $data['nom_acheteur'];
-            $_SESSION['usernid'] = $data['id_acheteur'];
-        }
-    } else {
-        echo "<p>Database not found.</p>";
+  if ($db_found) {
+    //on cherche le client
+    if (($mail != "") && ($mdp != "")) {
+      $sql = "SELECT * FROM acheteur WHERE mail_acheteur LIKE '%$mail%' AND mdp_acheteur LIKE '%$mdp%'";
     }
+
+    $result = mysqli_query($db_handle, $sql);
+  } else {
+    echo "<p>Database not found.</p>";
+  }
 }
 
-//fermer la connexion
-mysqli_close($db_handle);
+if ((mysqli_num_rows($result) != 0)) {
+  $result = mysqli_query($db_handle, $sql);
+  $data = mysqli_fetch_assoc($result);
+
+  $_SESSION['username'] = $data['nom_acheteur'];
+  $_SESSION['userid'] = $data['id_acheteur'];
+}
 
 ?>
-
 <!DOCTYPE html>
 <html>
 
@@ -79,9 +74,9 @@ mysqli_close($db_handle);
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav mx-auto">
-              <a class="nav-link active px-5" aria-current="page" href="#">Accueil</a>
+              <a class="nav-link active px-5" aria-current="page" href="index.php">Accueil</a>
               <a class="nav-link px-5" href="parcourir.php">Tout Parcourir</a>
-              <a class="nav-link px-5" href="notifications.php">Notifications</a>
+              <a class="nav-link px-5" href="page_notifications.php">Notifications</a>
               <a class="nav-link px-5" href="visu_panier.php">Panier</a>
               <?php
               if (!$_SESSION['username'])
@@ -95,72 +90,17 @@ mysqli_close($db_handle);
       </nav>
     </div>
 
-    <?php
-
-    $database = "piscine";
-
-    $db_handle = mysqli_connect('localhost', 'root', 'root');
-    $db_found = mysqli_select_db($db_handle, $database);
-    if (!$db_found) {
-      echo "db not found";
-    }
-
-    $sql = "SELECT * FROM items order by RAND() limit 3";
-    //$sql = "SELECT * FROM items WHERE id_item=1";
-    $result = mysqli_query($db_handle, $sql);
-    $data = mysqli_fetch_assoc($result);
-    $id = $data['id_item'];
-    ?>
-
-
     <div class="container-fluid" id="section" style="height: 800px;">
-      <div class="row">
+      <?php
+      if ((mysqli_num_rows($result) == 0)) {
+        echo "<center><h3>Le compte n'existe pas</h3></center>";
+      } else {
+        $result = mysqli_query($db_handle, $sql);
+        $data = mysqli_fetch_assoc($result);
 
-        <center>
-          <h1>Nos produits preféres</h1>
-        </center>
-        <div class="col-md-8 offset-md-2">
-          <br><br>
-          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <?php
-                $image = $data['photo1'];
-                echo "<center> <a href=page_produit.php?id=$id> <img src='$image' name =" . "prod" . "class=" . "d-block w-100" . "height=" . "800px" . " width=" . "600px" . "> </a> </center>";
-                ?>
-              </div>
-              <div class="carousel-item">
-                <?php
-                $data = mysqli_fetch_assoc($result);
-                $id = $data['id_item'];
-                $image = $data['photo1'];
-                echo "<center> <a href=page_produit.php?id=$id> <img src='$image' name =" . "prod" . "class=" . "d-block w-100" . "height=" . "800px" . " width=" . "600px" . "> </a> </center>";
-                ?>
-              </div>
-              <div class="carousel-item">
-                <?php
-                $data = mysqli_fetch_assoc($result);
-                $id = $data['id_item'];
-                $image = $data['photo1'];
-                echo "<center> <a href=page_produit.php?id=$id> <img src='$image' name =" . "prod" . "class=" . "d-block w-100" . "height=" . "800px" . " width=" . "600px" . "> </a> </center>";
-                ?>
-              </div>
-            </div>
-
-
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" style="color: black;">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next" style="color: black;">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
-
-        </div>
-
-      </div>
+        echo "<center><h3>Bienvenue!</h3></center>";
+      }
+      ?>
     </div>
 
 
@@ -175,8 +115,8 @@ mysqli_close($db_handle);
             <ul class="nav flex-column">
               <li class="nav-item mb-2"><a href="index.php" class="nav-link p-0 text-muted">Accueil</a></li>
               <li class="nav-item mb-2"><a href="parcourir.php" class="nav-link p-0 text-muted">Tout Parcourir</a></li>
-              <li class="nav-item mb-2"><a href="notifications.php" class="nav-link p-0 text-muted">Notifications</a></li>
-              <li class="nav-item mb-2"><a href="panier.php" class="nav-link p-0 text-muted">Panier</a></li>
+              <li class="nav-item mb-2"><a href="page_notifications.php" class="nav-link p-0 text-muted">Notifications</a></li>
+              <li class="nav-item mb-2"><a href="visu_ panier.php" class="nav-link p-0 text-muted">Panier</a></li>
               <li class="nav-item mb-2"><a href="compte.php" class="nav-link p-0 text-muted">Votre compte</a></li>
             </ul>
           </div>
@@ -194,8 +134,7 @@ mysqli_close($db_handle);
 
           <div class="col-md-4" id="map">
             Ou est-ce notre magasin?
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1033.460180458264!2d2.288410797944649!3d48.85248423190897!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sfr!4v1685393929817!5m2!1sen!2sfr" width="400" height="300" style="border:5px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
+            <iframe src="http://maps.google.com/maps?q=48.85115638469221,2.2861335791767474&z=15&output=embed" style="width:300px; height:300px;"></iframe>
           </div>
 
 

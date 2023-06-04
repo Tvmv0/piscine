@@ -48,13 +48,30 @@ session_start();
                         <div class="navbar-nav mx-auto">
                             <a class="nav-link active px-5" aria-current="page" href="index.php">Accueil</a>
                             <a class="nav-link px-5" href="#">Tout Parcourir</a>
-                            <a class="nav-link px-5" href="notifications.html">Notifications</a>
+                            <?php
+                            $database = "piscine";
+
+                            //connectez-vous dans BDD
+                            $db_handle = mysqli_connect('localhost', 'root', 'root');
+                            $db_found = mysqli_select_db($db_handle, $database);
+                            $id = $_SESSION['notif'];
+
+                            $sql = "SELECT * FROM items WHERE id_item = $id;";
+                            $result = mysqli_query($db_handle, $sql);
+                            $data = mysqli_fetch_assoc($result);
+
+                            if ($data['prix'] > $_SESSION['prix'] || $data['prix'] < $_SESSION['prix']) {
+                                echo "<a href=page_notifications.php><img src='notif2.png' name =" . "prod" . " height='50' width='170'> </a>";
+                            } else {
+                                echo "<a class=" . "nav-link px-5" . " href=" . "page_notifications.php" . ">Notifications</a>";
+                            }
+                            ?>
                             <a class="nav-link px-5" href="visu_panier.php">Panier</a>
                             <?php
                             if (!$_SESSION['username'])
                                 echo "<a class=" . "nav-link px-5" . " href=" . "connexion_client.php" . "> Connexion </a>";
                             else
-                                echo "<a class=" . "nav-link px-5" . " href=" . "compte.php" . ">" . $_SESSION['username'] . "</a>";
+                                echo "<a class=" . "nav-link px-5" . " href=" . "page_compte.php" . ">" . $_SESSION['username'] . "</a>";
                             ?>
                         </div>
                     </div>
@@ -116,8 +133,8 @@ session_start();
                             echo "<h4>" . $data['nom_obj'] . "</h4>";
                             echo "<h5>" . $data['prix'] . "€ </h5>";
 
-                            echo "<center> <a href=ajout_pan.php?id=$id><img src='ajout_pan.jpg' name =" . "prod" . " height='50' width='170'> </a> </center>";
-                            echo "<p><button id=notif>Notification</button></p>";
+                            //echo "<center> <a href=ajout_pan.php?id=$id><img src='ajout_pan.jpg' name =" . "prod" . " height='50' width='170'> </a> </center>";
+                            //echo "<center> <a href=notifications.php?id=$id><img src='notif.jpg' name =" . "prod" . " height='50' width='170'> </a> </center>";
                             echo "</div>";
                             echo "</div>";
 
@@ -131,8 +148,9 @@ session_start();
 
                                 echo "<h4>" . $data['nom_obj'] . "</h4>";
                                 echo "<h5>" . $data['prix'] . "€ </h5>";
-                                echo "<center> <a href=ajout_pan.php?id=$id><img src='ajout_pan.jpg' name =" . "prod" . " height='50' width='170'> </a> </center>";
-                                echo "<p><button id=notif>Notification</button></p>";
+                                echo "<br><br>";
+                                //echo "<center> <a href=ajout_pan.php?id=$id><img src='ajout_pan.jpg' name =" . "prod" . " height='50' width='170'> </a> </center>";
+                                //echo "<p><button id=notif>Notification</button></p>";
                                 echo "</div>";
                                 echo "</div>";
                             }
@@ -175,8 +193,7 @@ session_start();
 
                         <div class="col-md-4" id="map">
                             Ou est-ce notre magasin?
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1033.460180458264!2d2.288410797944649!3d48.85248423190897!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sfr!4v1685393929817!5m2!1sen!2sfr" width="400" height="300" style="border:5px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                            </iframe>
+                            <iframe src="http://maps.google.com/maps?q=48.85115638469221,2.2861335791767474&z=15&output=embed" style="width:300px; height:300px;"></iframe>
                         </div>
 
 

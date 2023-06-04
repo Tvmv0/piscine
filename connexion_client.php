@@ -9,9 +9,9 @@ SOURCES
     google maps: https://blog.hubspot.com/website/how-to-embed-google-map-in-html
     https://www.pierre-giraud.com/bootstrap-apprendre-cours/bouton/
   -->
-  <?php
-  session_start();
-  ?>
+<?php
+session_start();
+?>
 
 <!DOCTYPE html>
 <html>
@@ -34,7 +34,7 @@ SOURCES
     <div id="wrapper" class="container-fluid">
 
         <div id="header" class="container-fluid">
-        <center> <img src="logo.png" alt="logo"> </center>
+            <center> <img src="logo.png" alt="logo"> </center>
         </div>
 
         <div id="navigation" class="container-fluid">
@@ -56,21 +56,24 @@ SOURCES
         </div>
 
         <div class="container-fluid" id="section">
-            <div class="container">
-                <div class="form-group">
-                    <br>
-                    <ul class="nav nav-underline">
-                        <li class="nav-item">
-                            <a class="nav-link" href="co_vendeur.php">Vendeur</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Acheteur</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Admin</a>
-                        </li>
-                    </ul>
-                    <br>
+            <center>
+                <div class="container">
+                    <div class="form-group">
+                        <br>
+                        <ul class="nav nav-underline">
+                            <li class="nav-item">
+                                <a class="nav-link" href="compte.php">Vendeur</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Acheteur</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Admin</a>
+                            </li>
+                        </ul>
+                        <br>
+                    </div>
+
                     <!-- Headings for the form -->
                     <div class="headingsContainer">
                         <h3>Connexion</h3>
@@ -93,64 +96,60 @@ SOURCES
 
                             <!-- Submit button -->
                             <button type="submit" name="Connexion">Se connecter</button>
-
-
-
                         </div>
-
                     </form>
+            </center>
+        </div>
 
 
-
-                    <div class="container-fluid" id="footer">
-                        <div class="container">
-                            <footer class="py-5">
-                                <div class="row">
-                                    <div class="col-6 col-md-1 offset-md-1">
-                                        <h5>Navigation</h5>
-                                        <ul class="nav flex-column">
-                                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Accueil</a></li>
-                                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Tout Parcourir</a></li>
-                                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Notifications</a></li>
-                                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Panier</a></li>
-                                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Votre compte</a></li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="col-7 col-md-4 offset-md-2">
-                                        <h5>Contact et réseaux sociaux</h5>
-                                        <ul class="nav flex-column">
-                                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Mail:
-                                                    agorafrancia.commerce@gmail.com</a></li>
-                                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Tél: 12 34 56 78 90</a></li>
-                                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Instagram</a></li>
-                                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Twitter</a></li>
-                                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Facebook</a></li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="col-md-4" id="map">
-                                        <strong>
-                                            <h5>Où sommes-nous situés?</h5>
-                                        </strong>
-                                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1033.460180458264!2d2.288410797944649!3d48.85248423190897!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sfr!4v1685393929817!5m2!1sen!2sfr" width="400" height="300" style="border:5px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                                        </iframe>
-                                    </div>
-
-
-                                </div>
-
-                                <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-                                    <p>© 2022 Agora Fracia™</p>
-                                </div>
-                            </footer>
+        <div class="container-fluid" id="footer">
+            <div class="container">
+                <footer class="py-5">
+                    <div class="row">
+                        <div class="col-6 col-md-1 offset-md-1">
+                            <h5>Navigation</h5>
+                            <ul class="nav flex-column">
+                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Accueil</a></li>
+                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Tout Parcourir</a></li>
+                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Notifications</a></li>
+                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Panier</a></li>
+                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Votre compte</a></li>
+                            </ul>
                         </div>
+
+                        <div class="col-7 col-md-4 offset-md-2">
+                            <h5>Contact et réseaux sociaux</h5>
+                            <ul class="nav flex-column">
+                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Mail:
+                                        agorafrancia.commerce@gmail.com</a></li>
+                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Tél: 12 34 56 78 90</a></li>
+                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Instagram</a></li>
+                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Twitter</a></li>
+                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Facebook</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-md-4" id="map">
+                            <strong>
+                                <h5>Où sommes-nous situés?</h5>
+                            </strong>
+                            <iframe src="http://maps.google.com/maps?q=48.85115638469221,2.2861335791767474&z=15&output=embed" style="width:300px; height:300px;"></iframe>
+                        </div>
+
+
                     </div>
 
+                    <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+                        <p>© 2022 Agora Fracia™</p>
+                    </div>
+                </footer>
+            </div>
+        </div>
 
 
 
-                </div>
+
+    </div>
 
 
 </body>

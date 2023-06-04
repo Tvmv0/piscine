@@ -16,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Compte Agora Francia</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link href="allstyles.css" type="text/css" rel="stylesheet">
+    <link href="stylecompte.css" type="text/css" rel="stylesheet">
 
 </head>
 
@@ -41,11 +41,11 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav mx-auto">
-                            <a class="nav-link active px-5" aria-current="page" href="index.html">Accueil</a>
-                            <a class="nav-link px-5" href="parcourir.html">Tout Parcourir</a>
-                            <a class="nav-link px-5" href="notifications.html">Notifications</a>
-                            <a class="nav-link px-5" href="panier.html">Panier</a>
-                            <a class="nav-link px-5" href="compte.html">Votre compte</a>
+                            <a class="nav-link active px-5" aria-current="page" href="index.php">Accueil</a>
+                            <a class="nav-link px-5" href="parcourir.php">Tout Parcourir</a>
+                            <a class="nav-link px-5" href="notifications.php">Notifications</a>
+                            <a class="nav-link px-5" href="panier.php">Panier</a>
+                            <a class="nav-link px-5" href="compte.php">Votre compte</a>
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
                             <a class="nav-link active" aria-current="page" href="#">Vendeur</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="compteclient.html">Acheteur</a>
+                            <a class="nav-link" href="connexion_client.php">Acheteur</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Admin</a>
@@ -71,7 +71,7 @@
 
                     <!-- Headings for the form -->
                     <div class="headingsContainer">
-                        <h3>Connexion</h3>
+                        <h3>Connexion vendeur</h3>
                     </div>
                     <form action="co_vendeur.php" method="post">
                         <!-- Main container for all inputs -->
@@ -126,8 +126,7 @@
                                         <strong>
                                             <h5>Où sommes-nous situés?</h5>
                                         </strong>
-                                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1033.460180458264!2d2.288410797944649!3d48.85248423190897!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sfr!4v1685393929817!5m2!1sen!2sfr" width="400" height="300" style="border:5px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                                        </iframe>
+                                        <iframe src="http://maps.google.com/maps?q=48.85115638469221,2.2861335791767474&z=15&output=embed" style="width:300px; height:300px;"></iframe>
                                     </div>
 
 

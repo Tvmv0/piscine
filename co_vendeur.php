@@ -14,7 +14,7 @@ $username = isset($_POST["username"]) ? $_POST["username"] : "";
 $database = "piscine";
 
 //connectez-vous dans BDD
-$db_handle = mysqli_connect('localhost', 'root', '');
+$db_handle = mysqli_connect('localhost', 'root', 'root');
 $db_found = mysqli_select_db($db_handle, $database);
 
 
@@ -114,7 +114,7 @@ mysqli_close($db_handle);
   <div id="wrapper" class="container-fluid">
 
     <div id="header" class="container-fluid">
-    <center> <img src="logo.png" alt="logo"> </center>
+      <center> <img src="logo.png" alt="logo"> </center>
     </div>
 
     <div id="navigation" class="container-fluid">
@@ -125,11 +125,11 @@ mysqli_close($db_handle);
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav mx-auto">
-              <a class="nav-link active px-5" aria-current="page" href="index.html">Accueil</a>
-              <a class="nav-link px-5" href="parcourir.html">Tout Parcourir</a>
-              <a class="nav-link px-5" href="notifications.html">Notifications</a>
-              <a class="nav-link px-5" href="panier.html">Panier</a>
-              <a class="nav-link px-5" href="compte.html">Votre compte</a>
+              <a class="nav-link active px-5" aria-current="page" href="index.php">Accueil</a>
+              <a class="nav-link px-5" href="parcourir.php">Tout Parcourir</a>
+              <a class="nav-link px-5" href="notifications.php">Notifications</a>
+              <a class="nav-link px-5" href="panier.php">Panier</a>
+              <a class="nav-link px-5" href="compte.php">Votre compte</a>
             </div>
           </div>
         </div>
@@ -144,7 +144,7 @@ mysqli_close($db_handle);
 
         <?php
         $database = "piscine";
-        $db_handle = mysqli_connect('localhost', 'root', 'root');
+        $db_handle = mysqli_connect('localhost', 'root', '');
         $db_found = mysqli_select_db($db_handle, $database);
 
         $username = 'nom1';

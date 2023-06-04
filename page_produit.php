@@ -60,13 +60,13 @@ $data = mysqli_fetch_assoc($result);
                         <div class="navbar-nav mx-auto">
                             <a class="nav-link active px-5" aria-current="page" href="index.php">Accueil</a>
                             <a class="nav-link px-5" href="parcourir.php">Tout Parcourir</a>
-                            <a class="nav-link px-5" href="notifications.html">Notifications</a>
+                            <a class="nav-link px-5" href="page_notifications.php">Notifications</a>
                             <a class="nav-link px-5" href="visu_panier.php">Panier</a>
                             <?php
-                            if (!$_SESSION['user'])
+                            if (!$_SESSION['username'])
                                 echo "<a class=" . "nav-link px-5" . " href=" . "connexion_client.php" . "> Connexion </a>";
                             else
-                                echo "<a class=" . "nav-link px-5" . " href=" . "compte.php" . ">" . $_SESSION['user'] . "</a>";
+                                echo "<a class=" . "nav-link px-5" . " href=" . "compte.php" . ">" . $_SESSION['username'] . "</a>";
                             ?>
                         </div>
                     </div>
@@ -86,7 +86,7 @@ $data = mysqli_fetch_assoc($result);
                             $image = $data['photo1'];
 
                             $id = $data['id_item'];
-                            echo "<center> <img src='$image' id=img_page_produit name =" . "prod" . "height=" . '500' . "width=" . '500' . ">  </center>";
+                            echo "<center> <img src='$image' id=img_page_produit name =" . "prod " . "height=" . '300px' . "width=" . '250px' . ">  </center>";
 
                             echo "</div>";
                             echo "</div>";
@@ -103,24 +103,25 @@ $data = mysqli_fetch_assoc($result);
 
                         <?php
                         echo " <h3>" . $data['nom_obj'] . "</h3>";
-                        echo $data['descriptio'];
+                        echo $data['description'];
                         ?>
 
-                        <br><br>
+                        <br><br> 
 
                         <?php
                         echo " <h5>" . $data['prix'] . "€ </h5>";
+                        echo "Stock disponible: " . $data['stock'];
+                        echo"<br><br>";
                         ?>
-
-                        <br>
 
                         <?php
                         echo " <a href=ajout_pan.php?id=$id><img src='ajout_pan.jpg' name=" . "prod" . " height='50' width='170'> </a> ";
+                        echo"<br>";
+                        echo " <a href=notifications.php?id=$id><img src='notif.jpg' name =" . "prod" . " height='50' width='170'> </a>";
                         ?>
-                         
-                        <p><button id=notif>Notification</button></p>
-
+                    
                         <br>
+                        <br><br><br>
 
                         <h4>
                             Vendu par

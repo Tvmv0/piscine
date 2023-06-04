@@ -133,7 +133,7 @@ session_start();
                             Si une offre est faite sur un article, vous êtes sous contrat légal pour l'achter si le vendeur accepte
                             votre offre.
                         </label>
-                        <p class="register">Vous avez deja un compte ? <a href="compteclient.html">Connectez-vous !</a></p>
+                        <p class="register">Vous avez deja un compte ? <a href="compte.php">Connectez-vous !</a></p>
                     </div>
                     <div class="d-grid gap-2 col-6 mx-auto">
                         <button type="submit" name="Valider">Créer</button>
