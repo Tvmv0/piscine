@@ -52,7 +52,7 @@ session_start();
                             $database = "piscine";
 
                             //connectez-vous dans BDD
-                            $db_handle = mysqli_connect('localhost', 'root', 'root');
+                            $db_handle = mysqli_connect('localhost', 'root', '');
                             $db_found = mysqli_select_db($db_handle, $database);
                             $id = $_SESSION['notif'];
 
@@ -114,10 +114,6 @@ session_start();
                     <div class="col-md-8">
                         <div class="row">
                             <?php
-                            $database = "piscine";
-                            $db_handle = mysqli_connect('localhost', 'root', 'root');
-                            $db_found = mysqli_select_db($db_handle, $database);
-
                             $sql = "SELECT * FROM items ";
 
                             $result = mysqli_query($db_handle, $sql);

@@ -51,7 +51,7 @@ session_start();
               $database = "piscine";
 
               //connectez-vous dans BDD
-              $db_handle = mysqli_connect('localhost', 'root', 'root');
+              $db_handle = mysqli_connect('localhost', 'root', '');
               $db_found = mysqli_select_db($db_handle, $database);
               $id = $_SESSION['notif'];
               
@@ -83,15 +83,6 @@ session_start();
     </div>
 
     <?php
-
-    $database = "piscine";
-
-    $db_handle = mysqli_connect('localhost', 'root', 'root');
-    $db_found = mysqli_select_db($db_handle, $database);
-    if (!$db_found) {
-      echo "db not found";
-    }
-
     $sql = "SELECT * FROM items order by RAND() limit 3";
     //$sql = "SELECT * FROM items WHERE id_item=1";
     $result = mysqli_query($db_handle, $sql);

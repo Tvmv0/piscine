@@ -15,7 +15,7 @@ echo '<meta charset="utf-8">';
 echo '<link rel="stylesheet" type="text/css" href="allstyles2.css">';
 
 //connectez-vous dans BDD
-$db_handle = mysqli_connect('localhost', 'root', 'root');
+$db_handle = mysqli_connect('localhost', 'root', '');
 $db_found = mysqli_select_db($db_handle, $database);
 
 //si le bouton validé est cliqué

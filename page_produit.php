@@ -4,7 +4,7 @@ session_start();
 $database = "piscine";
 
 //connectez-vous dans BDD
-$db_handle = mysqli_connect('localhost', 'root', 'root');
+$db_handle = mysqli_connect('localhost', 'root', '');
 $db_found = mysqli_select_db($db_handle, $database);
 $id = $_GET['id'];
 
@@ -127,13 +127,6 @@ $data = mysqli_fetch_assoc($result);
                             Vendu par
 
                             <?php
-                            $id_vendeur = $data['id_vendeur'];
-                            $database = "piscine";
-
-                            //connectez-vous dans BDD
-                            $db_handle = mysqli_connect('localhost', 'root', 'root');
-                            $db_found = mysqli_select_db($db_handle, $database);
-
                             $sql = "SELECT * FROM items,vendeur WHERE items.id_vendeur = $id_vendeur AND vendeur.id_vendeur = items.id_vendeur";
                             $result = mysqli_query($db_handle, $sql);
                             $data2 = mysqli_fetch_assoc($result);
